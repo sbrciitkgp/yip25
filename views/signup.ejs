@@ -6,39 +6,41 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Sign Up</title>
 </head>
-<body>
-    <div class="bg-red-200 w-1 flex relative">
-        <div class="min-w-[8vw] bg-white"></div>
-        <div class="absolute text-black  text-xl my-2 mx-[6vw]">scatch</div>
-        <div class="left bg-blue-200 min-h-[100vh] min-w-[40vw]  flex flex-col items-center justify-center">
+<body class="relative">
+        <div class=" absolute w-[100vw] h-[100vh] bg-black">
+            <img src="/images/yipimg.jpg" alt="check"  class="w-full h-full absolute opacity-[0.3] object-cover overflow-hidden">
+        </div>
+        <div class="hero flex absolute">
+        <div class="left  min-h-[100vh] min-w-[46vw]  flex flex-col items-center justify-center backdrop-blur-[1px]">
             <div class="w-1/2 ">
-                <h1 class="text-3xl text-white">Welcome to <span class="text-blue-400 font-bold">Scatch</span></h1>
-                <h3 class="text-xl  m-2">create your account</h3>
+                <h1 class="text-3xl text-white">Welcome to <span class="text-blue-400 font-bold">YIP'26</span></h1>
+                <h3 class="text-xl  m-2 text-white">create your account</h3>
             </div>
             <div class=" w-1/2">
                 <form action="/user/create" class=" flex flex-col" method="POST">
-                    <input type="text" placeholder="Full Name" class="bg-white w-3/4 rounded-md m-2 p-2" name="name">
-                    <input type="email" placeholder="Email" class="bg-white w-3/4 rounded-md m-2 p-2" name="email">
-                    <input type="password" placeholder="Password" class="bg-white w-3/4 rounded-md m-2 p-2" name="password">
-                    <input type="submit" name="" id="" value="create my account" class="m-2 bg-blue-600 px-4 py-1 rounded-2xl cursor-pointer text-white self-start">
+                    <input type="text" placeholder="Full Name" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="name">
+                    <input type="email" placeholder="Email" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="email">
+                    <input type="password" placeholder="Password" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="password">
+                    <input type="submit" name="" id="" value="create my account" class="m-2 bg-blue-600 hover:bg-blue-700 transition duration-200 px-4 py-1 rounded-2xl cursor-pointer text-white self-start">
                 </form>
             </div>
             <div></div>
         </div>
-        <div class="or min-h-[100vh] min-w-[8vw] flex flex-col justify-center">
-            <div class="bg-blue-400 m-2 rounded-4xl text-center p-2 text-white max-w-1/2"><h1>OR</h1></div>
+        <div class="or min-h-[100vh] min-w-[8vw] flex flex-col justify-center backdrop-blur-[1px]">
+            <div class="bg-blue-600  rounded-4xl text-center p-2 text-white max-w-1/2"><h1>OR</h1></div>
         </div>
-        <div class="right bg-white min-h-[100vh] min-w-[44vw] flex flex-col  justify-center">
+        <div class="right min-h-[100vh] min-w-[46vw] flex flex-col  justify-center backdrop-blur-[1px]">
             <div class="m-2">
-                <h1>Login to your account</h1>
+                <h1 class="text-white">Login to your account</h1>
             </div>
             <div >
                 <form action="/user/login" class="flex flex-col" method="post">
-                    <input type="email" class="bg-gray-200 m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Email" >
-                    <input type="password" class="bg-gray-200 m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Password" >
-                    <input type="submit" class="bg-blue-500 text-white m-2 px-2 py-1 rounded-xl w-[80px] cursor-pointer" value="Login" >
+                    <input type="email" class="outline-none border border-1-white text-white m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Email" >
+                    <input type="password" class="outline-none border border-1-white text-white m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Password" >
+                    <input type="submit" class="bg-blue-600 hover:bg-blue-700 transition text-white m-2 px-2 py-1 rounded-xl w-[80px] cursor-pointer" value="Login" >
                 </form>
             </div>
+        </div>
         </div>
     </div>
 </body>
