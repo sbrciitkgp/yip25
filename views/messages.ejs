@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes slideUp {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-slide-up {
+        animation: slideUp 1.5s ease-out;
+      }
+    </style>
+
     <script>
       tailwind.config = {
         theme: {
@@ -23,12 +40,7 @@
       class="flex flex-col flex-wrap sm:flex-row sticky top-0 z-50 justify-between items-center p-4 bg-purple-800"
     >
       <div class="flex gap-4">
-        <img
-          src="images/yiplogo.png"
-          alt=""
-          width="20px"
-          height="20px"
-        />
+        <img src="images/yiplogo.png" alt="" width="20px" height="20px" />
         <h1 class="font-bold text-white">YIP'26</h1>
       </div>
       <div class="hidden sm:block">
@@ -58,11 +70,19 @@
                 <option value="Themes" class="text-sm md:hidden max-md:block">
                   Themes
                 </option>
-                <a href="/messages"><option value="Messages" class="">Messages</option></a>
+                <a href="/messages"
+                  ><option value="Messages" class="">Messages</option></a
+                >
               </select>
             </li></a
           >
-          <a href="/login"><button class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500">Login</button></a>
+          <a href="/login"
+            ><button
+              class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500"
+            >
+              Login
+            </button></a
+          >
         </ul>
       </div>
       <div class="sm:hidden">
@@ -94,11 +114,19 @@
                 <option value="Themes" class="text-sm block xs:hidden">
                   Themes
                 </option>
-                <a href="/messages"><option value="Messages" class="">Messages</option></a>
+                <a href="/messages"
+                  ><option value="Messages" class="">Messages</option></a
+                >
               </select>
             </li></a
           >
-          <a href="/login"><button class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500">Login</button></a>
+          <a href="/login"
+            ><button
+              class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500"
+            >
+              Login
+            </button></a
+          >
         </ul>
       </div>
     </nav>

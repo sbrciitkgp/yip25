@@ -1,36 +1,40 @@
+let slideIndex = 0;
+let slides = Array.from(document.getElementsByClassName("slide"));
+let dots = Array.from(document.getElementsByClassName("dot"));
+let prev = document.querySelector(".prev");
+let next = document.querySelector(".next");
 
-        let slideIndex = 0;
-        let slides = Array.from(document.getElementsByClassName("slide"));
-        let prev=document.querySelector(".prev");
-        let next=document.querySelector(".next");
-        let dots = Array.from(document.getElementsByClassName("dot"));
-        function showslide(index) {
-          slides.forEach((slide, i) => {
-            slide.classList.toggle("hidden", i !== index);
-          });
-          dots.forEach((dot, i) => {
-            dot.classList.toggle("bg-gray-700", i !== index);
-            dot.classList.toggle("bg-gray-400", i === index);
-          });
-          slideIndex = index;
-        }
-        dots.forEach((dot, i) => {
-          dot.addEventListener("click", () => {
-            showslide(i);
-          });
-        });
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.add("hidden"); 
+    slide.classList.remove("animate-slide-up"); 
+  });
 
-        prev.addEventListener("click", () => {
-            showslide((slideIndex - 1 +slides.length) % slides.length);
-          })
-        next.addEventListener("click", () => {
-            showslide((slideIndex + 1) % slides.length);
-          })
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("bg-gray-700", i !== index);
+    dot.classList.toggle("bg-gray-400", i === index);
+  });
 
+  slides[index].classList.remove("hidden");
+  slides[index].classList.add("animate-slide-up"); 
+  slideIndex = index;
+}
 
-        setInterval(() => {
-          let newIndex = (slideIndex + 1) % slides.length;
-          showslide(newIndex);
-        }, 3000);
-        showslide(slideIndex);
-  
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => showSlide(i));
+});
+
+prev.addEventListener("click", () => {
+  showSlide((slideIndex - 1 + slides.length) % slides.length);
+});
+
+next.addEventListener("click", () => {
+  showSlide((slideIndex + 1) % slides.length);
+});
+
+setInterval(() => {
+  let newIndex = (slideIndex + 1) % slides.length;
+  showSlide(newIndex);
+}, 5000);
+
+showSlide(slideIndex);
