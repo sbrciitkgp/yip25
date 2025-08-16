@@ -23,7 +23,12 @@
       class="flex flex-col flex-wrap sm:flex-row sticky top-0 z-50 justify-between items-center p-4 bg-purple-800"
     >
       <div class="flex gap-4">
-        <img src="./images/yiplogo.png" alt="" width="20px" height="20px" />
+        <img
+          src="images/yiplogo.png"
+          alt=""
+          width="20px"
+          height="20px"
+        />
         <h1 class="font-bold text-white">YIP'26</h1>
       </div>
       <div class="hidden sm:block">
@@ -53,11 +58,11 @@
                 <option value="Themes" class="text-sm md:hidden max-md:block">
                   Themes
                 </option>
-                <option value="Messages" class="">Messages</option>
+                <a href="/messages"><option value="Messages" class="">Messages</option></a>
               </select>
             </li></a
           >
-          <button class="bg-purple-600 px-4 py-1 rounded-lg">Login</button>
+          <a href="/login"><button class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500">Login</button></a>
         </ul>
       </div>
       <div class="sm:hidden">
@@ -89,17 +94,25 @@
                 <option value="Themes" class="text-sm block xs:hidden">
                   Themes
                 </option>
-                <option value="Messages" class="">Messages</option>
+                <a href="/messages"><option value="Messages" class="">Messages</option></a>
               </select>
             </li></a
           >
-          <button class="bg-purple-600 px-4 py-1 rounded-lg">Login</button>
+          <a href="/login"><button class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500">Login</button></a>
         </ul>
       </div>
     </nav>
     <section class="flex-1 flex flex-col justify-center items-center">
-        <div class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-purple-500 prev p-2 "><img src="./images/next.png" alt=""></div>
-        <div class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-purple-500 next p-2 "><img src="./images/back.png" alt=""></div>
+      <div
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-purple-500 prev p-2"
+      >
+        <img src="images/next.png" alt="" />
+      </div>
+      <div
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-purple-500 next p-2"
+      >
+        <img src="images/back.png" alt="" />
+      </div>
       <div
         class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
       >
@@ -107,7 +120,7 @@
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
         >
           <img
-            src="./images/rm.png"
+            src="images/rm.png"
             alt=""
             width="150px"
             height="150px"
@@ -137,7 +150,7 @@
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
         >
           <img
-            src="./images/rm.png"
+            src="images/rm.png"
             alt=""
             width="150px"
             height="150px"
@@ -170,7 +183,7 @@
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
         >
           <img
-            src="./images/rm.png"
+            src="images/rm.png"
             alt=""
             width="150px"
             height="150px"
@@ -200,43 +213,8 @@
         <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
         </span>
       </div>
-      <script>
-        let slideIndex = 0;
-        let slides = Array.from(document.getElementsByClassName("slide"));
-        let prev=document.querySelector(".prev");
-        let next=document.querySelector(".next");
-        let dots = Array.from(document.getElementsByClassName("dot"));
-        function showslide(index) {
-          slides.forEach((slide, i) => {
-            slide.classList.toggle("hidden", i !== index);
-          });
-          dots.forEach((dot, i) => {
-            dot.classList.toggle("bg-gray-700", i !== index);
-            dot.classList.toggle("bg-gray-400", i === index);
-          });
-          slideIndex = index;
-        }
-        dots.forEach((dot, i) => {
-          dot.addEventListener("click", () => {
-            showslide(i);
-          });
-        });
 
-        prev.addEventListener("click", () => {
-            showslide((slideIndex - 1 +slides.length) % slides.length);
-          })
-        next.addEventListener("click", () => {
-            showslide((slideIndex + 1) % slides.length);
-          })
-
-
-        setInterval(() => {
-          let newIndex = (slideIndex + 1) % slides.length;
-          showslide(newIndex);
-        }, 3000);
-        showslide(slideIndex);
-        
-      </script>
+      <script src="JS/messages.js"></script>
     </section>
   </body>
 </html>
