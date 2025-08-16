@@ -1,47 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Sign Up</title>
-</head>
-<body class="relative">
-        <div class=" absolute w-[100vw] h-[100vh] bg-black">
-            <img src="/images/yipimg.jpg" alt="check"  class="w-full h-full absolute opacity-[0.3] object-cover overflow-hidden">
-        </div>
-        <div class="hero flex absolute">
-        <div class="left  min-h-[100vh] min-w-[46vw]  flex flex-col items-center justify-center backdrop-blur-[1px]">
-            <div class="w-1/2 ">
-                <h1 class="text-3xl text-white">Welcome to <span class="text-blue-400 font-bold">YIP'26</span></h1>
-                <h3 class="text-xl  m-2 text-white">create your account</h3>
-            </div>
-            <div class=" w-1/2">
-                <form action="/user/create" class=" flex flex-col" method="POST">
-                    <input type="text" placeholder="Full Name" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="name">
-                    <input type="email" placeholder="Email" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="email">
-                    <input type="password" placeholder="Password" class="outline-none border border-1-white text-white w-3/4 rounded-md m-2 p-2" name="password">
-                    <input type="submit" name="" id="" value="create my account" class="m-2 bg-blue-600 hover:bg-blue-700 transition duration-200 px-4 py-1 rounded-2xl cursor-pointer text-white self-start">
-                </form>
-            </div>
-            <div></div>
-        </div>
-        <div class="or min-h-[100vh] min-w-[8vw] flex flex-col justify-center backdrop-blur-[1px]">
-            <div class="bg-blue-600  rounded-4xl text-center p-2 text-white max-w-1/2"><h1>OR</h1></div>
-        </div>
-        <div class="right min-h-[100vh] min-w-[46vw] flex flex-col  justify-center backdrop-blur-[1px]">
-            <div class="m-2">
-                <h1 class="text-white">Login to your account</h1>
-            </div>
-            <div >
-                <form action="/user/login" class="flex flex-col" method="post">
-                    <input type="email" class="outline-none border border-1-white text-white m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Email" >
-                    <input type="password" class="outline-none border border-1-white text-white m-2 px-2 py-1 rounded-lg w-1/2" placeholder="Password" >
-                    <input type="submit" class="bg-blue-600 hover:bg-blue-700 transition text-white m-2 px-2 py-1 rounded-xl w-[80px] cursor-pointer" value="Login" >
-                </form>
-            </div>
-        </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="/JS/signup.js" defer></script> -->
+    <title>YIP - Sign Up</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  </head>
+  <body
+    class="bg-gradient-to-br from-black to-gray-900 flex flex-col relative font-sans"
+  >
+    <% if (flashMessage) { %>
+    <div
+      id="flash"
+      class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-md z-50 transition-opacity duration-300"
+    >
+      <%= flashMessage %>
     </div>
-</body>
+    <script>
+      setTimeout(() => {
+        const flash = document.getElementById("flash");
+        if (flash) flash.style.opacity = "0";
+      }, 3000); 
+    </script>
+    <% } %>
+    <div class="fixed inset-0 z-0">
+      <img
+        src="/images/iitkgp.jpg"
+        alt="IIT KGP"
+        class="w-full h-full object-cover opacity-50"
+      />
+    </div>
+
+    <section class="z-10 flex items-center justify-center min-h-screen">
+      <div
+        class="w-full max-w-2xl bg-white/20 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl p-10"
+      >
+        <div class="text-center mb-8">
+          <h1 class="text-4xl font-bold text-black drop-shadow-md">
+            Welcome to <span class="text-blue-800">YIP'26</span>
+          </h1>
+          <h3 class="text-lg text-gray-300 mt-2">Create your account</h3>
+        </div>
+
+        <form
+          action="/user/create"
+          method="POST"
+          id="signupform"
+          class="space-y-4"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input
+              type="text"
+              placeholder="Team Name"
+              name="TeamName"
+              class="bg-white/10 text-black placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Mentor Name"
+              name="MentorName"
+              class="bg-white/10 text-white placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Mentor Email"
+              name="MentorEmail"
+              class="bg-white/10 text-white placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+            <input
+              type="tel"
+              placeholder="Mentor Phone No."
+              name="MentorPhone"
+              class="bg-white/10 text-white placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="Password"
+              id="pswd"
+              class="bg-white/10 text-white placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              name="cpassword"
+              id="cnfpswd"
+              class="bg-white/10 text-white placeholder-gray-300 px-4 py-2 rounded-md w-full outline-none border border-white/20 focus:ring-2 focus:ring-blue-400 transition"
+              required
+            />
+          </div>
+
+          <span id="error" class="text-red-400 text-md text-center"></span>
+
+          <div class="flex flex-col items-center gap-2 pt-4">
+            <button
+              type="submit"
+              class="w-[180px] bg-blue-600 hover:bg-blue-700 transition duration-200 px-4 py-2 rounded-full text-white font-semibold"
+            >
+              Register
+            </button>
+            <div class="flex gap-4">
+              Already have an account?<a
+                href="/login"
+                class="text-blue-800 hover:text-blue-500 transition font-medium text-sm"
+              >
+                <span>Login here</span>
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- Footer (visible on scroll) -->
+    <footer class="z-10 w-full"><%- include('partials/footer') %></footer>
+  </body>
 </html>
