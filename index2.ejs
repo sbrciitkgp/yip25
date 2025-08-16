@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              xs: "480px",
+              "max-xs": { max: "768px" },
+            },
+          },
+        },
+      };
+    </script>
+    <title>Messages</title>
+  </head>
+  <body class="bg-purple-700 flex flex-col h-screen relative">
+    <nav
+      class="flex flex-col flex-wrap sm:flex-row sticky top-0 z-50 justify-between items-center p-4 bg-purple-800"
+    >
+      <div class="flex gap-4">
+        <img src="./images/yiplogo.png" alt="" width="20px" height="20px" />
+        <h1 class="font-bold text-white">YIP'26</h1>
+      </div>
+      <div class="hidden sm:block">
+        <ul class="flex items-center justify-center gap-4 text-white">
+          <a href="#"><li>Home</li></a>
+          <a href="#"><li>About</li></a>
+          <a href="#"><li>Gallery</li></a>
+          <a href="#" class="max-sm:hidden"><li>Testimonials</li></a>
+          <a href="#" class="hidden md:block"><li>Themes</li></a>
+          <a href="#" class="hidden md:block"><li>Rule book</li></a>
+          <a href="#"
+            ><li>
+              <select
+                id="cars"
+                name="cars"
+                class="bg-purple-800 outline-none w-40px"
+              >
+                <option value="" disabled selected class="text-center">
+                  More
+                </option>
+                <option
+                  value="Rule Book"
+                  class="text-sm md:hidden max-md:block"
+                >
+                  Rule Book
+                </option>
+                <option value="Themes" class="text-sm md:hidden max-md:block">
+                  Themes
+                </option>
+                <option value="Messages" class="">Messages</option>
+              </select>
+            </li></a
+          >
+          <button class="bg-purple-600 px-4 py-1 rounded-lg">Login</button>
+        </ul>
+      </div>
+      <div class="sm:hidden">
+        <ul class="flex flex-wrap items-center justify-center gap-3 text-white">
+          <a href="#"><li>About</li></a>
+          <a href="#" class="sm:block max-sm:hidden"><li>Gallery</li></a>
+          <a href="#" class=""><li>Testimonials</li></a>
+          <a href="#" class="hidden xs:block"><li>Themes</li></a>
+          <a href="#" class="hidden sm:block"><li>Rule book</li></a>
+          <a href="#"
+            ><li>
+              <select
+                id="cars"
+                name="cars"
+                class="bg-purple-800 outline-none w-40px"
+              >
+                <option value="" disabled selected class="text-center">
+                  More
+                </option>
+                <option
+                  value="Rule Book"
+                  class="text-sm sm:hidden max-sm:block"
+                >
+                  Rule Book
+                </option>
+                <option value="Gallery" class="text-sm xs:hidden max-xs:block">
+                  Gallery
+                </option>
+                <option value="Themes" class="text-sm block xs:hidden">
+                  Themes
+                </option>
+                <option value="Messages" class="">Messages</option>
+              </select>
+            </li></a
+          >
+          <button class="bg-purple-600 px-4 py-1 rounded-lg">Login</button>
+        </ul>
+      </div>
+    </nav>
+    <section class="flex-1 flex flex-col justify-center items-center">
+        <div class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-purple-500 prev p-2 "><img src="./images/next.png" alt=""></div>
+        <div class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-purple-500 next p-2 "><img src="./images/back.png" alt=""></div>
+      <div
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+      >
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="./images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-800 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
+        </div>
+        <div class="left w-[70%] p-2 h-[100%] md:self-center">
+          <p class="text-justify">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quo
+            sint maiores, veritatis architecto perspiciatis hic, possimus
+            adipisci excepturi mollitia magnam! Corporis laboriosam quis sed
+            consequatur explicabo, obcaecati tempora accusamus architecto, vel
+            provident commodi quia sequi rerum aliquid error qui eveniet
+            quisquam. Sit porro rem eius, ex architecto quae deleniti!
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+      >
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="./images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-800 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
+        </div>
+        <div class="left w-[70%] p-2 h-[100%] md:self-center">
+          <p class="text-justify">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Consectetur debitis rem earum! Sapiente dolorum quidem facilis
+            veritatis voluptatibus nulla! Recusandae sit saepe enim laudantium
+            facilis, inventore consequatur at aperiam nulla nemo consequuntur
+            eaque et similique in esse suscipit ratione repudiandae cupiditate
+            laboriosam, est sunt veritatis voluptatum odio aliquid. Maxime nisi
+            blanditiis, ut necessitatibus distinctio nesciunt voluptatum
+            doloribus corporis dolor, illum eos at veniam rem voluptatem amet
+            eveniet. Consectetur, itaque pariatur.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+      >
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="./images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-800 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
+        </div>
+        <div class="left w-[70%] p-2 h-[100%] md:self-center">
+          <p class="text-justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            officia sequi facere molestias libero suscipit? Distinctio quibusdam
+            repellat eius? Eligendi, in consequuntur. Eos impedit delectus ipsam
+            at debitis voluptatibus voluptates harum quaerat. Id impedit
+            deleniti quasi ea nostrum pariatur natus, incidunt libero velit
+            voluptates labore!
+          </p>
+        </div>
+      </div>
+      <div class="btns flex gap-6 m-4">
+        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        </span>
+        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        </span>
+        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        </span>
+      </div>
+      <script>
+        let slideIndex = 0;
+        let slides = Array.from(document.getElementsByClassName("slide"));
+        let prev=document.querySelector(".prev");
+        let next=document.querySelector(".next");
+        let dots = Array.from(document.getElementsByClassName("dot"));
+        function showslide(index) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("hidden", i !== index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("bg-gray-700", i !== index);
+            dot.classList.toggle("bg-gray-400", i === index);
+          });
+          slideIndex = index;
+        }
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            showslide(i);
+          });
+        });
+
+        prev.addEventListener("click", () => {
+            showslide((slideIndex - 1 +slides.length) % slides.length);
+          })
+        next.addEventListener("click", () => {
+            showslide((slideIndex + 1) % slides.length);
+          })
+
+
+        setInterval(() => {
+          let newIndex = (slideIndex + 1) % slides.length;
+          showslide(newIndex);
+        }, 3000);
+        showslide(slideIndex);
+        
+      </script>
+    </section>
+  </body>
+</html>
