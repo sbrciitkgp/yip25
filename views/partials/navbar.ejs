@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navbar</title>
+  </head>
+  <body class="m-0 ">
+    <div class="flex gap-4">
+      <img src="images/yiplogo.png" alt="" width="20px" height="20px" />
+      <h1 class="font-bold text-white">YIP'26</h1>
+    </div>
+    <div class="">
+      <ul class="flex items-center justify-center gap-4 text-white">
+        <a href="/"><li class="max-[600px]:hidden">Home</li></a>
+        <a href="#"><li class="max-[600px]:hidden">About</li></a>
+        <a href="#"><li class="max-[600px]:hidden">Gallery</li></a>
+        <a href="#" class="hidden min-[1000px]:block"><li>Testimonials</li></a>
+        <a href="/themes" class="hidden min-[1000px]:block"><li>Themes</li></a>
+        <a href="#" class="max-[600px]:hidden"><li>Rule book</li></a>
+        <a href="/messages" class="hidden md:block"><li>Messages</li></a>
+        <a href="/previous" class="hidden md:block"><li>Previous YIP</li></a>
+        <li class="max-[890px]:block cursor-pointer max-[600px]:hidden" id="more" >
+          More
+          <div class="hidden  bg-white text-black rounded-lg fixed z-2 mt-3 p-2" id="morediv">
+            <ul>
+              <a href="#"><li class="hidden max-[1000px]:block">Testimonials</li></a>
+              <a href="/themes"><li class="hidden max-[1000px]:block">Themes</li></a>
+              <a href="/"><li class="hidden">Rule book</li></a>
+              <a href="/messages"><li class="md:hidden">Messages</li></a>
+              <a href="/previous"><li class="md:hidden">Previous YIP</li></a>
+            </ul>
+          </div>
+        </li>
+
+        <a href="/login"
+          ><button class="bg-gray-600 px-4 py-1 rounded-lg hover:bg-red-700">
+            Login
+          </button></a
+        >
+        <li class="min-[600px]:hidden">
+          <img src="images/hamburger.png" alt="" width="20px" id="shortnav" />
+        </li>
+      </ul>
+    </div>
+    <div class="hidden fixed top-16 left-0 w-full bg-gray-800 z-20 m-0 p-0" id="nav">
+      <ul class="flex flex-col justify-center items-center m-0 p-1">
+        <a href="/"><li class="p-1 text-white mb-2 ">Home</li></a>
+        <a href="/about"><li class="p-1 text-white mb-2 ">About</li></a>
+        <a href="/themes"><li class="p-1 text-white mb-2 ">Themes</li></a>
+        <a href="#gallery"><li class="p-1 text-white mb-2 ">Gallery</li></a>
+        <a href="#testimonials"><li class="p-1 text-white mb-2 ">Testimonials</li></a>
+        <a href="/"><li class="p-1 text-white mb-2 ">Rule book</li></a>
+        <a href="/previous"><li class="p-1 text-white mb-2 ">Previous YIP</li></a>
+        <a href="/messages"><li class="p-1 text-white mb-2 ">Messages</li></a>
+      </ul>
+    </div>
+   <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("more").addEventListener("click", () => {
+      document.getElementById("morediv").classList.toggle("hidden");
+      console.log("more is clicked")
+    });
+
+    let shortnav = document.getElementById("shortnav");
+    shortnav.addEventListener("click", () => {
+      document.getElementById("nav").classList.toggle("hidden");
+    });
+  });
+</script>
+
+  </body>
+</html>

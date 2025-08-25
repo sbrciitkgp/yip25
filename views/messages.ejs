@@ -4,22 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @keyframes slideUp {
-        from {
-          transform: translateY(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      .animate-slide-up {
-        animation: slideUp 1.5s ease-out;
-      }
-    </style>
+    <style></style>
 
     <script>
       tailwind.config = {
@@ -35,114 +20,25 @@
     </script>
     <title>Messages</title>
   </head>
-  <body class="bg-purple-700 flex flex-col h-screen relative">
+  <body class="bg-gray-100 flex flex-col h-screen relative">
     <nav
-      class="flex flex-col flex-wrap sm:flex-row sticky top-0 z-50 justify-between items-center p-4 bg-purple-800"
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-gray-700 max-w-screen"
     >
-      <div class="flex gap-4">
-        <img src="images/yiplogo.png" alt="" width="20px" height="20px" />
-        <h1 class="font-bold text-white">YIP'26</h1>
-      </div>
-      <div class="hidden sm:block">
-        <ul class="flex items-center justify-center gap-4 text-white">
-          <a href="#"><li>Home</li></a>
-          <a href="#"><li>About</li></a>
-          <a href="#"><li>Gallery</li></a>
-          <a href="#" class="max-sm:hidden"><li>Testimonials</li></a>
-          <a href="#" class="hidden md:block"><li>Themes</li></a>
-          <a href="#" class="hidden md:block"><li>Rule book</li></a>
-          <a href="#"
-            ><li>
-              <select
-                id="cars"
-                name="cars"
-                class="bg-purple-800 outline-none w-40px"
-              >
-                <option value="" disabled selected class="text-center">
-                  More
-                </option>
-                <option
-                  value="Rule Book"
-                  class="text-sm md:hidden max-md:block"
-                >
-                  Rule Book
-                </option>
-                <option value="Themes" class="text-sm md:hidden max-md:block">
-                  Themes
-                </option>
-                <a href="/messages"
-                  ><option value="Messages" class="">Messages</option></a
-                >
-              </select>
-            </li></a
-          >
-          <a href="/login"
-            ><button
-              class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500"
-            >
-              Login
-            </button></a
-          >
-        </ul>
-      </div>
-      <div class="sm:hidden">
-        <ul class="flex flex-wrap items-center justify-center gap-3 text-white">
-          <a href="#"><li>About</li></a>
-          <a href="#" class="sm:block max-sm:hidden"><li>Gallery</li></a>
-          <a href="#" class=""><li>Testimonials</li></a>
-          <a href="#" class="hidden xs:block"><li>Themes</li></a>
-          <a href="#" class="hidden sm:block"><li>Rule book</li></a>
-          <a href="#"
-            ><li>
-              <select
-                id="cars"
-                name="cars"
-                class="bg-purple-800 outline-none w-40px"
-              >
-                <option value="" disabled selected class="text-center">
-                  More
-                </option>
-                <option
-                  value="Rule Book"
-                  class="text-sm sm:hidden max-sm:block"
-                >
-                  Rule Book
-                </option>
-                <option value="Gallery" class="text-sm xs:hidden max-xs:block">
-                  Gallery
-                </option>
-                <option value="Themes" class="text-sm block xs:hidden">
-                  Themes
-                </option>
-                <a href="/messages"
-                  ><option value="Messages" class="">Messages</option></a
-                >
-              </select>
-            </li></a
-          >
-          <a href="/login"
-            ><button
-              class="bg-purple-600 px-4 py-1 rounded-lg hover:bg-purple-500"
-            >
-              Login
-            </button></a
-          >
-        </ul>
-      </div>
+      <%- include('partials/navbar') %>
     </nav>
     <section class="flex-1 flex flex-col justify-center items-center">
       <div
-        class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-purple-500 prev p-2"
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-emerald-500 prev p-2 z-50"
       >
         <img src="images/next.png" alt="" />
       </div>
       <div
-        class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-purple-500 next p-2"
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-emerald-500 next p-2 z-50"
       >
         <img src="images/back.png" alt="" />
       </div>
       <div
-        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
       >
         <div
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
@@ -154,8 +50,8 @@
             height="150px"
             class="rounded-lg"
           />
-          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-gray-800 font-semibold">
+          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-600 font-semibold">
             Dean, International Relations, IIT Kharagpur
           </h4>
         </div>
@@ -172,7 +68,7 @@
       </div>
 
       <div
-        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
       >
         <div
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
@@ -184,8 +80,8 @@
             height="150px"
             class="rounded-lg"
           />
-          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-gray-800 font-semibold">
+          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-600 font-semibold">
             Dean, International Relations, IIT Kharagpur
           </h4>
         </div>
@@ -205,7 +101,7 @@
       </div>
 
       <div
-        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-purple-600 sm:w-[60vw] gap-2 p-4 rounded-lg text-white"
+        class="messages flex slide hidden flex-col sm:flex-row justify-center items-center m-4 w-[80%] flex bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
       >
         <div
           class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
@@ -217,8 +113,8 @@
             height="150px"
             class="rounded-lg"
           />
-          <h1 class="text-2xl font-bold">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-gray-800 font-semibold">
+          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
+          <h4 class="text-md text-gray-600 font-semibold">
             Dean, International Relations, IIT Kharagpur
           </h4>
         </div>
@@ -234,11 +130,11 @@
         </div>
       </div>
       <div class="btns flex gap-6 m-4">
-        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer">
         </span>
-        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer">
         </span>
-        <span class="w-3 dot h-3 rounded-full bg-gray-700 cursor-pointer">
+        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer">
         </span>
       </div>
 

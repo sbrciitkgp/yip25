@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>User panle</title>
+  </head>
+  <body>
+    <section class="flex">
+      <div class="right w-1/4 bg-zinc-600 min-h-screen">
+        <div class="relative h-16">
+          <img
+            src="/images/yiplogo.png"
+            alt="YIP logo"
+            width="40px"
+            class="absolute top-[8px] right-1/2"
+          />
+        </div>
+        <div class="profile">
+          <div class="profilepic mt-2 flex justify-center">
+            <img
+              src="/images/profile.png"
+              alt=""
+              class="rounded-full"
+              width="80px"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="main w-1/2 bg-white min-h-screen bg-zinc-700 p-2">
+        <div>
+          <h1 class="font-bold text-2xl">Welcome Back,</h1>
+        </div>
+        <div>
+          <h1 class="font-semibold text-lg">
+            Please Enter Your Team details before 10/10/2025
+          </h1>
+        </div>
+        <div class="m-2 gap-4 flex flex-col justify-center items-center">
+          <input type="text" name="TeamName" id="" placeholder="Enter Your Team Name" class="w-[200px] px-2 py-1 bg-zinc-800 text-white rounded-md outline-none">
+          <input type="text" name="mentorname" id="" placeholder="Enter Your Mentor Name" class="w-[200px] px-2 py-1 bg-zinc-800 text-white rounded-md outline-none">
+          <div class="flex flex-col gap-4 items-center">
+          <input type="number" id="count" min="1" max="4" placeholder="Enter the number of participants" class=" p-1 rounded w-[200px] bg-zinc-800 outline-none text-white" />
+          </div>
+          <button
+            onclick="generateInputs()"
+            class="px-4 py-2 bg-blue-600 w-[100px] text-white rounded"
+          >
+            Generate
+          </button>
+        </div>
+        <div id="participantsContainer" class="flex flex-col gap-4 items-center"></div>
+      </div>
+      <div class="left w-1/4 bg-zinc-600 min-h-screen">Iesa</div>
+    </section>
+    <script src="/JS/userpanel.js"></script>
+  </body>
+</html>

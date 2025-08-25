@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Panel</title>
+  </head>
+  <body class="h-screen bg-gray-100 text-gray-900">
+    
+    <nav
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-gray-700 max-w-screen"
+    >
+      <%- include('partials/navbar') %>
+    </nav>
+
+    <div class="flex h-full">
+     
+      <aside class="hidden w-1/5 bg-gray-800 text-white p-5 sm:block" id="side">
+        <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+        <nav class="space-y-3">
+          <a href="/adminpanel" class="block p-2 rounded hover:bg-gray-700">Dashboard</a>
+          <a href="/admin/teams" class="block p-2 rounded hover:bg-gray-700">Teams</a>
+          <a href="/admin/mentors" class="block p-2 rounded hover:bg-gray-700">Mentors</a>
+          <a href="/admin/yourteam" class="block p-2 rounded hover:bg-gray-700">Your Team</a>
+        </nav>
+      </aside>
+
+      
+      <div id="hamburger" class="sm:hidden">
+        <img src="/images/hamburger.png" alt="menu" width="25px" class="m-2 fixed">
+      </div>
+
+      
+      <main class="flex-1 p-8 ">
+        <h1 class="text-3xl font-semibold mb-6">Allot POC to Team</h1>
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+          <h2 class="text-xl font-semibold mb-4">Select Team</h2>
+          <div class="space-y-4">
+            <form action="/admin/allotpoc" method="post">
+            <select id="teamSelect"
+            name="team"
+              class="border rounded-md p-2 w-full focus:ring focus:ring-blue-300 focus:outline-none mb-2"
+            >
+              <option value="">-- Select a Team --</option>
+              <% teams.forEach(team => { %>
+                <option value="<%= team.TeamName %>"><%= team.TeamName %></option>
+              <% }) %>
+            </select>
+
+           
+            <div class="relative">
+              <input
+                type="text"
+                id="teamSearch"
+                placeholder="Search Team..."
+                class="border rounded-md p-2 w-full focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+              <div
+                id="teamDropdown"
+                class="absolute bg-white border rounded-md mt-1 w-full max-h-40 overflow-y-auto hidden z-20"
+              >
+                <% teams.forEach(team => { %>
+                  <div
+                    class="p-2 hover:bg-gray-200 cursor-pointer"
+                    data-value="<%= team.TeamName %>"
+                  >
+                    <%= team.TeamName %>
+                  </div>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div id="pocSection" class="hidden bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4">Select POC</h2>
+          <div class="space-y-4">
+            
+            <select id="mentorSelect"
+            name="poc"
+              class="border rounded-md p-2 w-full focus:ring focus:ring-blue-300 focus:outline-none"
+            >
+              <option value="">-- Select a POC --</option>
+              <% mentors.forEach(poc => { %>
+                <option value="<%= poc.name %>"><%= poc.name %> - <%= poc.email %></option>
+              <% }) %>
+            </select>
+
+            
+            <div class="relative">
+              <input
+                type="text"
+                id="mentorSearch"
+                placeholder="Search POC..."
+                class="border rounded-md p-2 w-full focus:ring focus:ring-blue-300 focus:outline-none"
+              />
+              <div
+                id="mentorDropdown"
+                class="absolute bg-white border rounded-md mt-1 w-full max-h-40 overflow-y-auto hidden z-20"
+              >
+                <% mentors.forEach(poc => { %>
+                  <div
+                    class="p-2 hover:bg-gray-200 cursor-pointer"
+                    data-value="<%= poc.MentorName %>"
+                  >
+                    <%= poc.MentorName %> - <%= poc.MentorEmail %>
+                  </div>
+                <% }) %>
+              </div>
+            </div>
+
+            <button
+              id="allotBtn"
+              type="submit"
+              class="w-full text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700"
+            >
+              Allot POC
+            </button>
+          </div>
+        </div>
+        </form>
+        
+        <div class="mt-3 bg-white rounded-lg p-2">
+          <form action="/admin/notice" method="post">
+            <input
+              type="text"
+              name="notice"
+              placeholder="Type New Notice"
+              class="w-full border rounded-md p-1 focus:ring focus:ring-blue-300 focus:outline-none"
+            />
+            <input
+              type="submit"
+              value="Add Notice"
+              class="mt-4 m-2 text-white bg-red-700 px-3 py-2 rounded-lg cursor-pointer"
+            />
+          </form>
+        </div>
+      </main>
+
+     
+      <% if (notices.length > 0) { %>
+      <aside
+        class="w-1/3 bg-gray-50 border-l border-gray-200 p-5 overflow-y-auto sm:1/4 list-none"
+      >
+        <% notices.forEach(notice => { %>
+          <li class="bg-gray-200 p-2 mb-2 rounded-md">
+            <p class="font-semibold mb-1"><%= notice.content %></p>
+            <p class="text-xs text-gray-600 mb-3">
+              <%= notice.createdAt.toDateString() %>
+            </p>
+          </li>
+        <% }) %>
+      </aside>
+      <% } %>
+    </div>
+
+    
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const side = document.getElementById("side");
+
+      
+      hamburger.addEventListener("click", () => {
+        side.classList.toggle("hidden");
+        side.classList.toggle("fixed");
+        side.classList.toggle("z-40");
+        side.classList.toggle("h-screen");
+        side.classList.toggle("top-0");
+        side.classList.toggle("left-0");
+      });
+
+      // Utility: search filter
+      function setupSearch(inputId, dropdownId, selectId) {
+        const input = document.getElementById(inputId);
+        const dropdown = document.getElementById(dropdownId);
+        const select = document.getElementById(selectId);
+        const items = dropdown.querySelectorAll("div");
+
+        input.addEventListener("input", () => {
+          const query = input.value.toLowerCase();
+          dropdown.classList.remove("hidden");
+          items.forEach((item) => {
+            item.style.display = item.textContent.toLowerCase().includes(query)
+              ? "block"
+              : "none";
+          });
+        });
+
+        items.forEach((item) => {
+          item.addEventListener("click", () => {
+            input.value = item.textContent;
+            select.value = item.dataset.value; // update native select
+            dropdown.classList.add("hidden");
+
+            if (selectId === "teamSelect" && select.value) {
+              document.getElementById("pocSection").classList.remove("hidden");
+            }
+          });
+        });
+
+        // Hide dropdown when clicked outside
+        document.addEventListener("click", (e) => {
+          if (!dropdown.contains(e.target) && e.target !== input) {
+            dropdown.classList.add("hidden");
+          }
+        });
+      }
+
+      // Setup for Teams & Mentors
+      setupSearch("teamSearch", "teamDropdown", "teamSelect");
+      setupSearch("mentorSearch", "mentorDropdown", "mentorSelect");
+
+      // Show POC section when team is selected from native dropdown
+      document.getElementById("teamSelect").addEventListener("change", (e) => {
+        if (e.target.value) {
+          document.getElementById("pocSection").classList.remove("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teams</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom breakpoint at 500px */
+      @media (max-width: 500px) {
+        #side {
+          display: none !important; /* hide sidebar */
+        }
+        #hamburger {
+          display: block !important; /* show hamburger */
+        }
+      }
+      @media (min-width: 501px) {
+        #side {
+          display: flex !important; /* show sidebar */
+        }
+        #hamburger {
+          display: none !important; /* hide hamburger */
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 flex">
+    <!-- Sidebar -->
+    <aside
+      id="side"
+      class="flex-col w-1/5 bg-gray-800 text-white p-5 h-screen"
+    >
+      <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+      <nav class="space-y-3">
+        <a href="/adminpanel" class="block p-2 rounded hover:bg-gray-700">Dashboard</a>
+        <a href="/admin/teams" class="block p-2 rounded hover:bg-gray-700">Teams</a>
+        <a href="/admin/mentors" class="block p-2 rounded hover:bg-gray-700">Mentors</a>
+      </nav>
+    </aside>
+
+    <!-- Hamburger (shown only <500px) -->
+    <div id="hamburger" class="hidden absolute top-2 left-2 z-50">
+      <img
+        src="/images/hamburger.png"
+        alt="menu"
+        width="28"
+        class="cursor-pointer"
+      />
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 p-6 relative">
+      <!-- Dashboard button -->
+      <div class="absolute top-2 right-2">
+        <a href="/adminpanel">
+          <button
+            class="font-bold bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+          >
+            Go To Dashboard
+          </button>
+        </a>
+      </div>
+
+      <h1 class="text-2xl font-bold mb-6 mt-10 md:mt-0">All Teams</h1>
+
+      <!-- Teams container -->
+      <div class="flex flex-wrap gap-6">
+        <% teams.forEach(team => { %>
+        <div
+          class="bg-white shadow-md rounded-lg p-5 flex flex-col w-64 hover:shadow-lg transition"
+        >
+          <h2 class="text-xl font-bold text-blue-600 mb-3 self-center">
+            <%= team.TeamName %>
+          </h2>
+
+          <div class="mb-2">
+            <p class="font-semibold">Mentor:</p>
+            <p><%= team.MentorName %></p>
+          </div>
+
+          <div class="mb-2">
+            <p class="font-semibold">Email:</p>
+            <p class="text-gray-700"><%= team.MentorEmail %></p>
+          </div>
+
+          <div class="mb-2">
+            <p class="font-semibold">Phone:</p>
+            <p class="text-gray-700"><%= team.MentorPhone %></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const side = document.getElementById("side");
+
+      hamburger.addEventListener("click", () => {
+        if (side.style.display === "none" || side.classList.contains("hidden")) {
+          side.style.display = "flex";
+          side.classList.remove("hidden");
+          side.classList.add(
+            "fixed",
+            "top-0",
+            "left-0",
+            "z-40",
+            "h-screen",
+            "w-3/4",
+            "bg-gray-800",
+            "flex-col"
+          );
+        } else {
+          side.style.display = "none";
+          side.classList.add("hidden");
+          side.classList.remove("fixed", "top-0", "left-0", "z-40", "w-3/4");
+        }
+      });
+    </script>
+  </body>
+</html>
