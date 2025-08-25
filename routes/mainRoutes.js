@@ -15,7 +15,7 @@ router.get("/register", (req, res) => {
   res.render("signup", { flashMessage: null });
 });
 
-router.get('/userpanel', (req, res) => {
+router.get('/userpanel',isLoggedIn, (req, res) => {
   res.render("userpanel",);
 });
 
@@ -54,23 +54,31 @@ router.get("/messages", (req, res) => {
   res.render("messages");
 });
 
-router.get("/adminpanel/teams", (req, res) => {
+router.get("/adminpanel/teams",isLoggedIn, (req, res) => {
   res.render("teams");
 });
 
-
-router.get("/admin/notice/:id/edit", async (req, res) => {
-  const notices = await noticeModel.findById(req.params.id);
-  console.log(notices);
-  res.render("adminpanel", { notices });
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
 });
 
-router.get("/admin/notice/:id/delete", async (req, res) => {
+router.get("/admin/notice/:id/edit",isLoggedIn, async (req, res) => {
+  const notice = await noticeModel.findById(req.params.id);
+  res.render('editnotice',{notice});
+});
+
+// router.get("/admin/notice/edit", (req, res) => {
+//   res.clearCookie("token");
+//   res.redirect("/");
+// });
+
+router.get("/admin/notice/:id/delete",isLoggedIn, async (req, res) => {
   await noticeModel.findByIdAndDelete(req.params.id);
   res.redirect("/adminpanel");
 });
 
-router.get("/admin/mentors", async (req, res) => {
+router.get("/admin/mentors",isLoggedIn, async (req, res) => {
   try {
     const teams = await userModel.find({});
     res.render("mentors", { teams });
@@ -80,12 +88,18 @@ router.get("/admin/mentors", async (req, res) => {
   }
 });
 
+router.post("/admin/notice/:id/edit", async (req, res) => {
+  const { content } = req.body;
+  await noticeModel.findByIdAndUpdate(req.params.id, { content });
+  res.redirect("/adminpanel");
+});
+
 router.post("/userpanel/mentor", (req, res) => {
   const count = parseInt(req.body.count);
   res.render("123", { count });
 });
 
-router.post("/admin/allotpoc", async (req, res) => {
+router.post("/admin/allotpoc",isLoggedIn, async (req, res) => {
   const { team, poc } = req.body;
 
   const teamDoc = await userModel.findOne({ TeamName: team });
@@ -103,7 +117,7 @@ router.post("/admin/allotpoc", async (req, res) => {
   res.redirect("/adminpanel");
 });
 
-router.post("/admin/notice", async (req, res) => {
+router.post("/admin/notice",isLoggedIn, async (req, res) => {
   let content = req.body.notice;
   let notice = await noticeModel.create({
     content,

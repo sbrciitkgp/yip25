@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <style></style>
 
     <script>
       tailwind.config = {
@@ -22,18 +21,19 @@
   </head>
   <body class="bg-gray-100 flex flex-col h-screen relative">
     <nav
-      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-gray-700 max-w-screen"
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-gray-700 w-screen"
     >
       <%- include('partials/navbar') %>
     </nav>
+    
     <section class="flex-1 flex flex-col justify-center items-center">
       <div
-        class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-emerald-500 prev p-2 z-50"
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:right-[19vw] right-[15vw] cursor-pointer bg-gray-400 prev p-2 z-50"
       >
         <img src="images/next.png" alt="" />
       </div>
       <div
-        class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-emerald-500 next p-2 z-50"
+        class="fixed w-8 h-8 rounded-full top-[50vh] md:left-[19vw] left-[15vw] cursor-pointer bg-gray-400 next p-2 z-50"
       >
         <img src="images/back.png" alt="" />
       </div>
@@ -50,7 +50,7 @@
             height="150px"
             class="rounded-lg"
           />
-          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
+          <h1 class="text-2xl font-bold text-red-700">Prof Rabibrata Mukherjee</h1>
           <h4 class="text-md text-gray-600 font-semibold">
             Dean, International Relations, IIT Kharagpur
           </h4>
