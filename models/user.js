@@ -1,4 +1,3 @@
-
 const mongoose=require('mongoose');
 mongoose.connect(`mongodb://127.0.0.1:27017/yip`)
 const userSchema=mongoose.Schema({
@@ -16,6 +15,19 @@ const userSchema=mongoose.Schema({
     match: [/.+\@.+\..+/, 'Please enter a valid email address']
   },
    MentorPhone:{
+    type:Number,
+    required:true,
+    },
+   SchoolName:{
+    type:String,
+    required:true,
+    },
+   SchoolEmail: {
+    type: String,
+    required: true,
+    match: [/.+\@.+\..+/, 'Please enter a valid email address']
+  },
+   SchoolPhone:{
     type:Number,
     required:true,
     },

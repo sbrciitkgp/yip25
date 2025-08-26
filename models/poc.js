@@ -16,7 +16,7 @@ const pocSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }]
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: "team" }]
 }, );
 
 const POC = mongoose.model("poc", pocSchema);

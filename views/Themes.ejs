@@ -7,14 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-950 text-white font-sans">
-    <!-- Navbar -->
+
     <nav
       class="sticky flex top-0 z-50 justify-between items-center p-4 bg-gray-700 max-w-screen"
     >
       <%- include('partials/navbar') %>
     </nav>
 
-    <!-- Themes Section -->
+
     <section class="container mx-auto px-6 mt-10 text-center">
       <h1 class="text-4xl md:text-5xl font-extrabold">Themes</h1>
       <p class="text-gray-300 mt-2">
@@ -22,17 +22,16 @@
       </p>
     </section>
 
-    <!-- Slider Section -->
     <section class="flex justify-center mt-6">
       <div
         class="relative w-full md:w-3/4 lg:w-2/3 aspect-video overflow-hidden rounded-2xl shadow-2xl"
       >
-        <!-- Slider Wrapper -->
+       
         <div
           id="slider"
           class="flex transition-transform duration-700 ease-in-out h-full"
         >
-          <!-- Slide 1 -->
+          
           <div class="flex-shrink-0 w-full relative">
             <img
               src="https://yip2024.vercel.app/images/theme-image-1.png"
@@ -51,7 +50,7 @@
             </div>
           </div>
 
-          <!-- Slide 2 -->
+          
           <div class="flex-shrink-0 w-full relative">
             <img
               src="https://yip2024.vercel.app/images/theme-image-2.png"
@@ -67,7 +66,7 @@
             </div>
           </div>
 
-          <!-- Slide 3 -->
+          
           <div class="flex-shrink-0 w-full relative">
             <img
               src="https://yip2024.vercel.app/images/theme-image-3.png"
@@ -83,7 +82,7 @@
             </div>
           </div>
 
-          <!-- Slide 4 -->
+         
           <div class="flex-shrink-0 w-full relative">
             <img
               src="https://yip2024.vercel.app/images/theme-image-4.png"
@@ -100,7 +99,7 @@
           </div>
         </div>
 
-        <!-- Navigation Arrows -->
+       
         <button
           id="prev"
           class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 z-20"
@@ -114,7 +113,7 @@
           &#10095;
         </button>
 
-        <!-- Dots -->
+       
         <div
           class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20"
         >
@@ -134,7 +133,7 @@
       </div>
     </section>
 
-    <!-- Why Participate Section -->
+    
     <section class="container mx-auto px-6 mt-16 text-center">
       <h2 class="text-3xl md:text-4xl font-bold">Why Participate?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
@@ -190,7 +189,7 @@
 
       function showSlide(i) {
         index = (i + slides.length) % slides.length;
-        const slideWidth = slides[0].offsetWidth; // get actual width
+        const slideWidth = slides[0].offsetWidth; 
         slider.style.transform = `translateX(-${index * slideWidth}px)`;
         dots.forEach((dot, idx) => {
           dot.classList.toggle("bg-white", idx === index);

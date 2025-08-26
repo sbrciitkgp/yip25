@@ -1,73 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>navbar</title>
-  </head>
-  <body class="m-0 ">
-    <div class="flex gap-4">
-      <img src="images/yiplogo.png" alt="" width="20px" height="20px" />
-      <h1 class="font-bold text-white">YIP'26</h1>
-    </div>
-    <div class="">
-      <ul class="flex items-center justify-center gap-4 text-white">
-        <a href="/"><li class="max-[600px]:hidden">Home</li></a>
-        <a href="#"><li class="max-[600px]:hidden">About</li></a>
-        <a href="#"><li class="max-[600px]:hidden">Gallery</li></a>
-        <a href="#" class="hidden min-[1024px]:block"><li>Testimonials</li></a>
-        <a href="/themes" class="hidden min-[1024px]:block"><li>Themes</li></a>
-        <a href="#" class="max-[600px]:hidden"><li>Rule book</li></a>
-        <a href="/messages" class="hidden md:block"><li>Messages</li></a>
-        <a href="/previous" class="hidden md:block"><li>Previous YIP</li></a>
-        <li class="hidden min-[600px]:block lg:min-[901px]:hidden cursor-pointer" id="more">
-          More
-          <div class="hidden  bg-white text-black rounded-lg fixed z-2 mt-3 p-2" id="morediv">
-            <ul>
-              <a href="#"><li class="hidden max-[1024px]:block">Testimonials</li></a>
-              <a href="/themes"><li class="hidden max-[1024px]:block">Themes</li></a>
-              <a href="/"><li class="hidden">Rule book</li></a>
-              <a href="/messages"><li class="md:hidden">Messages</li></a>
-              <a href="/previous"><li class="md:hidden">Previous YIP</li></a>
-            </ul>
-          </div>
-        </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Navbar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-        <a href="/logout"
-          ><button class="bg-gray-600 px-4 py-1 rounded-lg hover:bg-red-700">
-            Logout
-          </button></a
-        >
-        <li class="min-[600px]:hidden">
-          <img src="images/hamburger.png" alt="" width="20px" id="shortnav" />
-        </li>
+  <nav class=" w-full px-4 sm:px-6 py-2 flex items-center justify-between text-white">
+
+    <a href="/" class="flex items-center gap-3">
+      <img src="images/yiplogo.png" alt="YIP" class="w-7 h-7"/>
+      <span class="font-bold">YIP'26</span>
+    </a>
+
+    <ul class="hidden sm:flex items-center gap-4">
+
+      <a href="/"            class="nav-link" data-path="/"><li>Home</li></a>
+      <a href="/about"       class="nav-link" data-path="/about"><li>About</li></a>
+      <a href="/themes"      class="nav-link" data-path="/themes"><li>Themes</li></a>
+      <a href="/rulebook"    class="nav-link" data-path="/rulebook"><li>Rule book</li></a>
+
+
+      <a href="/gallery"      class="nav-link hidden min-[800px]:inline" data-path="/gallery"><li>Gallery</li></a>
+      <a href="/testimonials" class="nav-link hidden min-[800px]:inline" data-path="/testimonials"><li>Testimonials</li></a>
+
+      
+      <a href="/previouseditions" class="nav-link hidden lg:inline" data-path="/previous"><li>Previous YIP</li></a>
+      <a href="/messages" class="nav-link hidden lg:inline" data-path="/messages"><li>Messages</li></a>
+
+
+      <li class="relative hidden sm:block lg:hidden">
+        <button id="moreBtn" class="px-2 py-1 rounded hover:bg-gray-700">More</button>
+        <div id="moreMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg z-40">
+          <ul class="py-2">
+            
+            <a href="/previouseditions" class="block px-4 py-2 hover:bg-gray-100 nav-link" data-path="/previous">Previous YIP</a>
+            <a href="/messages" class="block px-4 py-2 hover:bg-gray-100 nav-link" data-path="/messages">Messages</a>
+            <a href="/gallery" class="more-extra block px-4 py-2 hover:bg-gray-100 nav-link hidden" data-path="/gallery">Gallery</a>
+            <a href="/testimonials" class="more-extra block px-4 py-2 hover:bg-gray-100 nav-link hidden" data-path="/testimonials">Testimonials</a>
+          </ul>
+        </div>
+      </li>
+
+
+      <a href="/logout" class="loglink">
+        <button class=" logout bg-gray-600 px-4 py-1 rounded-lg hover:bg-red-700">Logout</button>
+      </a>
+    </ul>
+
+
+    <button id="hamburger" class="sm:hidden p-2 rounded hover:bg-gray-700" aria-label="Open menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </nav>
+
+
+  <div id="overlay" class="hidden fixed inset-0 bg-black/50 z-40 "></div>
+  <aside id="sidebar"
+         class="hidden text-white fixed top-0 left-0 h-full w-72 bg-gray-800 z-50 transform -translate-x-full transition-transform duration-300">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+      <span class="font-semibold">Menu</span>
+      <button id="closeSidebar" class="p-1 rounded hover:bg-gray-700" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="p-4">
+      <ul class="flex flex-col gap-2">
+
+        <a href="/"             class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/"><li>Home</li></a>
+        <a href="/about"        class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/about"><li>About</li></a>
+        <a href="/themes"       class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/themes"><li>Themes</li></a>
+        <a href="/rulebook"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/rulebook"><li>Rule book</li></a>
+        <a href="/gallery"      class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/gallery"><li>Gallery</li></a>
+        <a href="/testimonials" class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/testimonials"><li>Testimonials</li></a>
+        <a href="/previouseditions"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/previous"><li>Previous YIP</li></a>
+        <a href="/messages"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/messages"><li>Messages</li></a>
+        <a href="/logout"       class="loglink px-3 py-2 rounded hover:bg-red-700 text-red-300"><li class="logout">Logout</li></a>
       </ul>
-    </div>
-    <div class="hidden fixed top-16 left-0 w-full bg-gray-800 z-20 m-0 p-0" id="nav">
-      <ul class="flex flex-col justify-center items-center m-0 p-1">
-        <a href="/"><li class="p-1 text-white mb-2 ">Home</li></a>
-        <a href="/about"><li class="p-1 text-white mb-2 ">About</li></a>
-        <a href="/themes"><li class="p-1 text-white mb-2 ">Themes</li></a>
-        <a href="#gallery"><li class="p-1 text-white mb-2 ">Gallery</li></a>
-        <a href="#testimonials"><li class="p-1 text-white mb-2 ">Testimonials</li></a>
-        <a href="/"><li class="p-1 text-white mb-2 ">Rule book</li></a>
-        <a href="/previous"><li class="p-1 text-white mb-2 ">Previous YIP</li></a>
-        <a href="/messages"><li class="p-1 text-white mb-2 ">Messages</li></a>
-      </ul>
-    </div>
-   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("more").addEventListener("click", () => {
-      document.getElementById("morediv").classList.toggle("hidden");
-      console.log("more is clicked")
-    });
+    </nav>
+  </aside>
 
-    let shortnav = document.getElementById("shortnav");
-    shortnav.addEventListener("click", () => {
-      document.getElementById("nav").classList.toggle("hidden");
-    });
-  });
-</script>
+  <script>
+    
+    const moreBtn  = document.getElementById('moreBtn');
+    const moreMenu = document.getElementById('moreMenu');
+    const moreExtra = document.querySelectorAll('.more-extra');
 
-  </body>
+    if (moreBtn) {
+      moreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        moreMenu.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        if (!moreMenu.classList.contains('hidden')) moreMenu.classList.add('hidden');
+      });
+    }
+
+    
+    function handleResize() {
+      if (window.innerWidth < 800) {
+        moreExtra.forEach(el => el.classList.remove('hidden'));
+      } else {
+        moreExtra.forEach(el => el.classList.add('hidden'));
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+
+    const hamburger    = document.getElementById('hamburger');
+    const sidebar      = document.getElementById('sidebar');
+    const overlay      = document.getElementById('overlay');
+    const closeSidebar = document.getElementById('closeSidebar');
+
+    function openSidebar() {
+      overlay.classList.remove('hidden');
+      sidebar.classList.remove('hidden');
+      requestAnimationFrame(() => sidebar.classList.remove('-translate-x-full'));
+    }
+    function closeSide() {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+      setTimeout(() => sidebar.classList.add('hidden'), 300);
+    }
+
+    hamburger && hamburger.addEventListener('click', openSidebar);
+    overlay   && overlay.addEventListener('click', closeSide);
+    closeSidebar && closeSidebar.addEventListener('click', closeSide);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSide(); });
+
+    
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+
+    if(path=='/'){
+
+      document.querySelectorAll('.loglink').forEach(e=>{
+        e.setAttribute("href", "/login");
+      })
+     document.querySelectorAll('.logout').forEach(e => {
+  e.innerText = "Login";
+
+});
+
+    }
+
+    const markActive = (selector) => {
+      document.querySelectorAll(selector).forEach(a => {
+        const target = a.getAttribute('data-path');
+        if (target === path || (target !== '/' && path.startsWith(target))) {
+          a.classList.add('underline', 'decoration-2', 'underline-offset-4', 'font-semibold');
+        }
+      });
+    };
+    markActive('.nav-link');
+    markActive('.side-link');
+  </script>
+</body>
 </html>

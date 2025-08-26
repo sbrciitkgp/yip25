@@ -8,30 +8,31 @@
       rel="stylesheet"
     />
     <style>
-      /* Custom breakpoint at 500px */
+
       @media (max-width: 500px) {
         #side {
-          display: none !important; /* hide sidebar */
+          display: none !important; 
+          
         }
         #hamburger {
-          display: block !important; /* show hamburger */
+          display: block !important; 
         }
       }
       @media (min-width: 501px) {
         #side {
-          display: flex !important; /* show sidebar */
+          display: flex !important; 
         }
         #hamburger {
-          display: none !important; /* hide hamburger */
+          display: none !important; 
         }
       }
     </style>
   </head>
   <body class="bg-gray-100 text-gray-900 flex">
-    <!-- Sidebar -->
+
     <aside
       id="side"
-      class="flex-col w-1/5 bg-gray-800 text-white p-5 h-screen"
+      class="flex-col w-1/5 bg-gray-800 text-white p-5 min-h-screen"
     >
       <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
       <nav class="space-y-3">
@@ -41,7 +42,6 @@
       </nav>
     </aside>
 
-    <!-- Hamburger (shown only <500px) -->
     <div id="hamburger" class="hidden absolute top-2 left-2 z-50">
       <img
         src="/images/hamburger.png"
@@ -51,9 +51,9 @@
       />
     </div>
 
-    <!-- Main content -->
+
     <div class="flex-1 p-6 relative">
-      <!-- Dashboard button -->
+
       <div class="absolute top-2 right-2">
         <a href="/adminpanel">
           <button
@@ -66,7 +66,7 @@
 
       <h1 class="text-2xl font-bold mb-6 mt-10 md:mt-0">All Teams</h1>
 
-      <!-- Teams container -->
+      
       <div class="flex flex-wrap gap-6">
         <% teams.forEach(team => { %>
         <div
@@ -95,30 +95,6 @@
       </div>
     </div>
 
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const side = document.getElementById("side");
-
-      hamburger.addEventListener("click", () => {
-        if (side.style.display === "none" || side.classList.contains("hidden")) {
-          side.style.display = "flex";
-          side.classList.remove("hidden");
-          side.classList.add(
-            "fixed",
-            "top-0",
-            "left-0",
-            "z-40",
-            "h-screen",
-            "w-3/4",
-            "bg-gray-800",
-            "flex-col"
-          );
-        } else {
-          side.style.display = "none";
-          side.classList.add("hidden");
-          side.classList.remove("fixed", "top-0", "left-0", "z-40", "w-3/4");
-        }
-      });
-    </script>
+    <script src="JS/mentors.js"></script>
   </body>
 </html>

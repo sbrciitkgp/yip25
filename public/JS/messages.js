@@ -5,18 +5,18 @@ let prev = document.querySelector(".prev");
 let next = document.querySelector(".next");
 
 function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.add("hidden"); 
-    slide.classList.remove("animate-slide-up"); 
+  slides.forEach((slide) => {
+    slide.classList.add("hidden");
+    slide.classList.remove("animate-slide-up");
   });
 
   dots.forEach((dot, i) => {
-    dot.classList.toggle("bg-gray-700", i !== index);
-    dot.classList.toggle("bg-gray-400", i === index);
+    dot.classList.toggle("bg-gray-700", i === index);
+    dot.classList.toggle("bg-gray-400", i !== index);
   });
 
   slides[index].classList.remove("hidden");
-  slides[index].classList.add("animate-slide-up"); 
+  slides[index].classList.add("animate-slide-up");
   slideIndex = index;
 }
 
