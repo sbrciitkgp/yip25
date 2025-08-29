@@ -11,7 +11,7 @@ const jwt = require("jsonwebtoken");
 const Team = require("../models/team.js");
 
 router.get("/", (req, res) => {
-  res.render("main");
+  res.render("home");
 });
 
 router.get("/register", (req, res) => {
@@ -19,7 +19,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/userpanel", isLoggedIn, (req, res) => {
-  res.render("userpanel");
+  res.render("userpanel",{});
 });
 
 router.get("/admin/result", isLoggedIn, async (req, res) => {

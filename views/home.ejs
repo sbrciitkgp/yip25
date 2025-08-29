@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/home.css">
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Poppins:wght@500&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .query-section {
+            background: url('assets/sbrc-2024-team.jpg') no-repeat center center/cover;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/sbrc-2024-team.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tag {
+            display: block;
+            width: 20%;
+            background-color: #26a69a;
+            color: white;
+            padding: 11px 14px;
+            border-radius: 3px;
+            font-size: 15px;
+            margin: 0px auto 10px auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #d0ebea;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+            font-size: 35px;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 9px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 12px;
+            background: white;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-row input {
+            flex: 1;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 30%;
+            padding: 13px;
+            background-color: #26a69a;
+            color: white;
+            border: none;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        button:hover {
+            background-color: #078276;
+        }
+
+        @media (max-width: 500px) {
+            .input-row {
+                flex-direction: column;
+            }
+        }
+
+         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Poppins&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+    #testimonial {
+      text-align: center;
+      color: #263339;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .slider-container {
+      width: 80%;
+      margin: 0px auto;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .slide img {
+      width: 470px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .slide p {
+      max-width: 380px;
+      text-align: center;
+      font-size: 14px;
+      word-wrap: break-word;
+      white-space: normal;
+      margin: 0 auto;
+    }
+
+    .slide .client {
+      margin: 22px 0px;
+    }
+
+    @media (max-width: 600px) {
+      .slider-container {
+        width: 95%;
+      }
+
+      .slide img {
+        width: 100%;
+        height: auto;
+      }
+
+      .slide h3 {
+        font-size: 18px !important;
+      }
+
+      .slide p {
+        font-size: 13px;
+        max-width: 90%;
+      }
+
+      .slide .client {
+        font-size: 12px;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+      .slider-container {
+        width: 90%;
+      }
+
+      .slide img {
+        width: 90%;
+        height: auto;
+      }
+
+      .slide h3 {
+        font-size: 20px !important;
+      }
+
+      .slide p {
+        font-size: 14px;
+        max-width: 85%;
+      }
+    }
+    </style>
+</head>
+<body>
+
+  
+  <section id="home" class="hero">
+    <div class="hero__bg" role="img" aria-label="YIP background image"></div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <h1 class="hero__title">Young Innovators Program 2025</h1>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="#" target="_blank" rel="noopener">Rule Book</a>
+        <a class="btn btn--solid" href="#" target="_blank" rel="noopener">Results</a>
+      </div>
+    </div>
+  </section>
+
+  
+<section id="about" class="section">
+  <div class="container grid-2">
+    <div>
+      <h2 class="section__title">About Us</h2>
+      <h3 class="eyebrow">Event History</h3>
+      <p>
+        The Young Innovators Program serves as a distinguished platform dedicated to fostering
+        the scientific curiosity and problem-solving acumen of aspiring young minds.
+      </p>
+      <p>
+        <strong>Eligibility Criteria:</strong> This competition exclusively welcomes students currently
+        enrolled in grades VIII to XII, with the explicit objective of acknowledging and nurturing their
+        creative potential.
+      </p>
+      <ul class="about-list">
+        <li>
+          <i data-feather="users" class="about-icon"></i>
+          Present projects to esteemed researchers and guests.
+        </li>
+        <li>
+          <i data-feather="book-open" class="about-icon"></i>
+          Immerse in IIT Kharagpur's scientific environment.
+        </li>
+        <li>
+          <i data-feather="star" class="about-icon"></i>
+          Join YIP'24 and shine.
+        </li>
+      </ul>
+    </div>
+    <div class="about-card fade-in">
+      <p>
+        Top teams nationwide will be selected after the first round and they will be called to
+        Indian Institute of Technology, Kharagpur to exhibit and demonstrate their models or
+        prototype and charts which will be evaluated by professors of IIT Kharagpur.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+  feather.replace();
+</script>
+
+
+    <section id="timeline" class="section section--darkimage">
+    <div class="section-bg" role="img" aria-label="Timeline background"></div>
+    <div class="section-dim"></div>
+
+    <div class="container">
+      <h2 class="section_title section_title--invert">Event Timeline</h2>
+
+      <div class="timeline">
+      
+        <article class="tl-item">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-content">
+            <h3 class="tl-title">Registration</h3>
+            <p>
+              The principal needs to nominate a coordinating teacher for this program, who will be given a user ID and password for registration of the students. The students need to form a team of 2-3 members and submit their name and details to the coordinating teacher of the school.
+            </p>
+            <span class="tl-chip">
+              <span class="default-text">Start</span>
+              <span class="hover-text">Started</span>
+            </span>
+          </div>
+        </article>
+
+        
+        <article class="tl-item">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-content">
+            <h3 class="tl-title">Round 1</h3>
+            <p>
+              Round I Submission Starts The team will submit their abstract of the project ideas briefing the scientific proposal based on the chosen theme. The online submissions of the projects will be done by the coordinating teacher by using his/her user id and password on the portal. Round 1 results will be released on our website. All participants who make it to the next round will also receive the news via email. The selected students will proceed to round 2.
+            </p>
+            <span class="tl-chip">
+              <span class="default-text">Details</span>
+              <span class="hover-text">27th Oct - 15th Dec 2025</span>
+            </span>
+          </div>
+        </article>
+
+        
+        <article class="tl-item">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-content">
+            <h3 class="tl-title">Round 2 (Semifinal) @ IIT Kharagpur</h3>
+            <p>Top teams nationwide will be selected after the first round and they will be called to Indian Institute of Technology, Kharagpur to exhibit and demonstrate their models or prototype and charts which will be evaluated by professors of IIT Kharagpur. The selected team need to confirm their presence for a two-day event held at IIT Kharagpur. The registration fees for this round will be declared after the announcement of the results of the 1st round.Selected teams exhibit and demonstrate prototypes at IIT Kharagpur.
+            </p>
+            <span class="tl-chip">
+              <span class="default-text">Details</span>
+              <span class="hover-text">11th Jan 2025</span>
+            </span>
+          </div>
+        </article>
+
+        
+        <article class="tl-item">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-content">
+            <h3 class="tl-title">Round 3 (Final) @ IIT Kharagpur</h3>
+            <p>
+              The qualifying teams from the second round will be qualified for the winners round. In this round each team will be given an opportunity to demonstrate their ideas in the form of a presentation followed by a Q&A session.
+            </p>
+            <span class="tl-chip">
+              <span class="default-text">Details</span>
+              <span class="hover-text">12th Jan 2025</span>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+ <h2 id="testimonial">Testimonial</h2>
+  <div class="slider-container" id="sliderContainer">
+    <div class="slider" id="sliderTrack">
+      <div class="slide">
+        <img src="assets/ShamrockInternationalSchool.jpg" alt="Image 1">
+        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;"">Shamrock International School (YIP 2023)</h3>
+        <p>
+          We thank the entire team of SBRC for the initiative and
+          complying and managing everything in such difficult
+          circumstances.
+        </p>
+        <p class=" client">- Mrs AK Sindhu</p>
+      </div>
+      <div class="slide">
+        <img src="assets/NHGoelSchool.jpeg.jpg" alt="Image 2">
+        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;">NH GOEL SCHOOL (YIP 2023)</h3>
+        <p>
+          Big thanks to Team SBRC for hosting such a great event. We
+          learned a lot, and your round-the-clock support was
+          amazing. Thanks for being so hospitable. Here's to even
+          more success in future YIPs!
+        </p>
+        <p class="client">- Mrs AK Sindhu</p>
+      </div>
+      <div class="slide">
+        <img src="assets/AtomicEnergyCentralSchool.jpg" alt="Image 3">
+        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;"">Atomic Energy Central School (YIP 2023)</h3>
+        <p>
+          Thank you so much for all the help extended to us. It is
+          indeed a life time memory for us. Thanks to everyone of
+          SBRC team. We learnt a lot during our stay at IIT
+          Kharagpur. Keep your spirits high. I can see a bright
+          future in your eyes.
+        </p>
+        <p class=" client">- Mrs AK Sindhu</p>
+      </div>
+    </div>
+  </div>
+   <section class="query-section">
+        <div class="query-box">
+            <span class="tag">Query</span>
+            <h1>Have any doubts?</h1>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <div class="input-row">
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone No." required>
+                </div>
+                <textarea rows="4" placeholder="Enter your query..." required></textarea>
+                <button type="submit">Send Query</button>
+            </form>
+        </div>
+    </section>
+
+
+ <script>
+    const track = document.getElementById("sliderTrack");
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function goToSlide(i) {
+      track.style.transform = translateX(-${i * 100}%);
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      goToSlide(index);
+    }
+
+    setInterval(nextSlide, 4000);
+  </script>
+
+  
+</body>
+</html>
