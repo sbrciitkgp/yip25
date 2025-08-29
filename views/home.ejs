@@ -6,197 +6,224 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/CSS/home.css">
+  <link rel="stylesheet" href="CSS/home.css" />
   <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Poppins:wght@500&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+  /* Global Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  /* Hero section */
+  .hero__title {
+    font-family: "Poppins", sans-serif;
+    font-size: 35px;
+    font-weight: 600;
+    color: #fff;
+  }
 
-        .query-section {
-            background: url('assets/sbrc-2024-team.jpg') no-repeat center center/cover;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/sbrc-2024-team.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+  /* About section */
+  .section__title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
 
-        .tag {
-            display: block;
-            width: 20%;
-            background-color: #26a69a;
-            color: white;
-            padding: 11px 14px;
-            border-radius: 3px;
-            font-size: 15px;
-            margin: 0px auto 10px auto;
-            text-align: center;
-        }
+  /* ---------- Testimonial Slider ---------- */
+  #testimonial {
+    text-align: center;
+    color: #263339;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin: 40px 0 20px;
+  }
 
-        h1 {
-            margin-bottom: 20px;
-            color: #d0ebea;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            font-size: 35px;
-            font-weight: 600;
-            font-style: normal;
-        }
+  .testimonial-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
 
-        input,
-        textarea {
-            width: 100%;
-            padding: 9px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 12px;
-            background: white;
-        }
+  .testimonial-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
 
-        .input-row {
-            display: flex;
-            gap: 10px;
-        }
+  .testimonial-slide {
+    flex: 0 0 100%;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    padding: 15px;
+  }
 
-        .input-row input {
-            flex: 1;
-        }
+  .testimonial-slide img {
+    width: 470px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
 
-        textarea {
-            resize: vertical;
-        }
+  .testimonial-slide h3 {
+    font-size: 22px;
+    margin: 0 0 9px;
+  }
 
-        button {
-            width: 30%;
-            padding: 13px;
-            background-color: #26a69a;
-            color: white;
-            border: none;
-            font-size: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 0 auto;
-        }
+  .testimonial-slide p {
+    max-width: 380px;
+    font-size: 14px;
+    margin: 0 auto;
+  }
 
-        button:hover {
-            background-color: #078276;
-        }
+  .testimonial-slide .client {
+    margin: 15px 0;
+    font-style: italic;
+  }
 
-        @media (max-width: 500px) {
-            .input-row {
-                flex-direction: column;
-            }
-        }
+  /* ---------- Gallery Slider ---------- */
+  .gallery {
+    text-align: center;
+    margin: 20px 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+  }
 
-         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Poppins&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libertinus+Serif:wght@600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+  .gallery-container {
+    width: 700px;
+    height: 400px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  }
 
-    #testimonial {
-      text-align: center;
-      color: #263339;
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      font-style: normal;
+  .gallery-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .gallery-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .gallery-slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .gallery-btn {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .gallery-btn.prev {
+    left: 10px;
+  }
+
+  .gallery-btn.next {
+    right: 10px;
+  }
+
+  /* ---------- Query Section ---------- */
+  .query-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("assets/sbrc-2024-team.jpg") center/cover no-repeat;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .query-box {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .tag {
+    display: block;
+    width: 120px;
+    background-color: #26a69a;
+    color: white;
+    padding: 11px 14px;
+    border-radius: 3px;
+    font-size: 15px;
+    margin: 0 auto 10px auto;
+    text-align: center;
+  }
+
+  .query-box h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .input-row input {
+    flex: 1;
+  }
+
+  button {
+    width: 30%;
+    padding: 13px;
+    background-color: #26a69a;
+    color: white;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+
+  button:hover {
+    background-color: #078276;
+  }
+
+  @media (max-width: 600px) {
+    .testimonial-slide img {
+      width: 100%;
+      height: auto;
     }
-
-    .slider-container {
-      width: 80%;
-      margin: 0px auto;
-      overflow: hidden;
+    .gallery-container {
+      width: 95%;
+      height: auto;
     }
-
-    .slider {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      display: flex;
+    .input-row {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-      font-weight: 400;
-      font-style: normal;
     }
+  }
+</style>
 
-    .slide img {
-      width: 470px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-      margin-bottom: 15px;
-    }
-
-    .slide p {
-      max-width: 380px;
-      text-align: center;
-      font-size: 14px;
-      word-wrap: break-word;
-      white-space: normal;
-      margin: 0 auto;
-    }
-
-    .slide .client {
-      margin: 22px 0px;
-    }
-
-    @media (max-width: 600px) {
-      .slider-container {
-        width: 95%;
-      }
-
-      .slide img {
-        width: 100%;
-        height: auto;
-      }
-
-      .slide h3 {
-        font-size: 18px !important;
-      }
-
-      .slide p {
-        font-size: 13px;
-        max-width: 90%;
-      }
-
-      .slide .client {
-        font-size: 12px;
-      }
-    }
-
-    @media (min-width: 601px) and (max-width: 900px) {
-      .slider-container {
-        width: 90%;
-      }
-
-      .slide img {
-        width: 90%;
-        height: auto;
-      }
-
-      .slide h3 {
-        font-size: 20px !important;
-      }
-
-      .slide p {
-        font-size: 14px;
-        max-width: 85%;
-      }
-    }
-    </style>
 </head>
 <body>
 
@@ -329,78 +356,119 @@
       </div>
     </div>
   </section>
- <h2 id="testimonial">Testimonial</h2>
-  <div class="slider-container" id="sliderContainer">
-    <div class="slider" id="sliderTrack">
-      <div class="slide">
-        <img src="assets/ShamrockInternationalSchool.jpg" alt="Image 1">
-        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;"">Shamrock International School (YIP 2023)</h3>
-        <p>
-          We thank the entire team of SBRC for the initiative and
-          complying and managing everything in such difficult
-          circumstances.
-        </p>
-        <p class=" client">- Mrs AK Sindhu</p>
+  <section>
+    <h1 class="gallery">Gallery</h1>
+    <div class="gallery-container" id="slider">
+      <div class="gallery-slide active">
+        <img src="images/gallery_1.jpg" />
       </div>
-      <div class="slide">
-        <img src="assets/NHGoelSchool.jpeg.jpg" alt="Image 2">
-        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;">NH GOEL SCHOOL (YIP 2023)</h3>
-        <p>
-          Big thanks to Team SBRC for hosting such a great event. We
-          learned a lot, and your round-the-clock support was
-          amazing. Thanks for being so hospitable. Here's to even
-          more success in future YIPs!
-        </p>
-        <p class="client">- Mrs AK Sindhu</p>
+      <div class="gallery-slide">
+        <img src="images/gallery_2.jpg" />
       </div>
-      <div class="slide">
-        <img src="assets/AtomicEnergyCentralSchool.jpg" alt="Image 3">
-        <h3 style="font-size: 22px;margin-top: 0px;margin-bottom: 9px;"">Atomic Energy Central School (YIP 2023)</h3>
-        <p>
-          Thank you so much for all the help extended to us. It is
-          indeed a life time memory for us. Thanks to everyone of
-          SBRC team. We learnt a lot during our stay at IIT
-          Kharagpur. Keep your spirits high. I can see a bright
-          future in your eyes.
-        </p>
-        <p class=" client">- Mrs AK Sindhu</p>
+      <div class="gallery-slide">
+        <img src="images/gallery_3.jpg" />
+      </div>
+
+      <button class="gallery-btn prev" onclick="changeSlide(-1)">⟨</button>
+      <button class="gallery-btn next" onclick="changeSlide(1)">⟩</button>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section>
+    <h2 id="testimonial">Testimonial</h2>
+    <div class="testimonial-container">
+      <div class="testimonial-slider" id="sliderTrack">
+        <div class="testimonial-slide">
+          <img src="images/ShamrockInternationalSchool.jpg" alt="Image 1" />
+          <h3>Shamrock International School (YIP 2023)</h3>
+          <p>
+            We thank the entire team of SBRC for the initiative and managing
+            everything in such difficult circumstances.
+          </p>
+          <p class="client">- Mrs AK Sindhu</p>
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/NHGoelSchool.jpeg.jpg" alt="Image 2" />
+          <h3>NH GOEL SCHOOL (YIP 2023)</h3>
+          <p>
+            Big thanks to Team SBRC for hosting such a great event. We learned a
+            lot, and your round-the-clock support was amazing.
+          </p>
+          <p class="client">- Mrs AK Sindhu</p>
+        </div>
+        <div class="testimonial-slide">
+          <img src="images/AtomicEnergyCentralSchool.jpg" alt="Image 3" />
+          <h3>Atomic Energy Central School (YIP 2023)</h3>
+          <p>
+            Thank you so much for all the help extended to us. It is indeed a
+            life time memory. We learnt a lot during our stay at IIT Kharagpur.
+          </p>
+          <p class="client">- Mrs AK Sindhu</p>
+        </div>
       </div>
     </div>
-  </div>
-   <section class="query-section">
-        <div class="query-box">
-            <span class="tag">Query</span>
-            <h1>Have any doubts?</h1>
-            <form>
-                <input type="text" placeholder="Name" required>
-                <div class="input-row">
-                    <input type="email" placeholder="Email" required>
-                    <input type="tel" placeholder="Phone No." required>
-                </div>
-                <textarea rows="4" placeholder="Enter your query..." required></textarea>
-                <button type="submit">Send Query</button>
-            </form>
+  </section>
+
+  <!-- Query Section -->
+  <section class="query-section">
+    <div class="query-box">
+      <span class="tag">Query</span>
+      <h1>Have any doubts?</h1>
+      <form>
+        <input type="text" placeholder="Name" required />
+        <div class="input-row">
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone No." required />
         </div>
-    </section>
+        <textarea rows="4" placeholder="Enter your query..." required></textarea>
+        <button type="submit">Send Query</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+const track = document.getElementById("sliderTrack");
+  const testimonialSlides = track.querySelectorAll(".testimonial-slide");
+  let testimonialIndex = 0;
+
+  function goToSlide(i) {
+    track.style.transform = `translateX(-${i * 100}%)`;
+  }
+
+  function nextTestimonial() {
+    testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
+    goToSlide(testimonialIndex);
+  }
+
+  setInterval(nextTestimonial, 4000);
 
 
- <script>
-    const track = document.getElementById("sliderTrack");
-    const slides = document.querySelectorAll(".slide");
-    let index = 0;
+  // --- Gallery Slider ---
+  const gallery = document.getElementById("slider");
+  const gallerySlides = gallery.querySelectorAll(".gallery-slide");
+  let current = 0;
+  let timer;
 
-    function goToSlide(i) {
-      track.style.transform = translateX(-${i * 100}%);
-    }
+  const showSlide = (i) => {
+    gallerySlides.forEach((s) => s.classList.remove("active"));
+    gallerySlides[i].classList.add("active");
+  };
 
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      goToSlide(index);
-    }
+  const changeSlide = (dir) => {
+    current = (current + dir + gallerySlides.length) % gallerySlides.length;
+    showSlide(current);
+  };
 
-    setInterval(nextSlide, 4000);
-  </script>
+  const autoSlide = () => {
+    timer = setInterval(() => changeSlide(1), 2000);
+  };
 
-  
+  gallery.addEventListener("mouseenter", () => clearInterval(timer));
+  gallery.addEventListener("mouseleave", autoSlide);
+
+  autoSlide();
+</script>
+
 </body>
 </html>
