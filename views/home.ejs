@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YIP-26</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#0b1120] text-gray-200">
+
+  <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
+      <%- include('partials/navbar') %>
+    </nav>
+
+  <!-- Hero -->
+  <section id="home" class="relative min-h-[72vh] grid place-items-center isolate">
+    <div class="absolute inset-0 bg-cover bg-center grayscale-[.1] contrast-[1.02] saturate-[1.1] -z-20" style="background-image:url('images/yipimg.jpg');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#020617]/50 to-[#020617]/85 -z-10"></div>
+    <div class="w-[92%] max-w-[1100px] text-center py-20">
+      <h1 class="text-4xl md:text-6xl font-semibold leading-tight mb-6 text-white">Young Innovators Program 2025</h1>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg border border-white/25 bg-white/10 text-white font-semibold hover:bg-white/20 transition">Rule Book</a>
+        <a href="#" target="_blank" rel="noopener" class="px-5 py-3 rounded-lg bg-sky-500 font-bold text-[#031521] shadow-md hover:bg-sky-400 transition">Results</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20">
+    <div class="w-[92%] max-w-[1100px] mx-auto grid md:grid-cols-2 gap-8 items-start">
+      <div>
+        <h2 class="text-3xl font-semibold mb-2">About Us</h2>
+        <h3 class="text-sky-400 font-extrabold mb-4">Event History</h3>
+        <p class="mb-4">
+          The Young Innovators Program serves as a distinguished platform dedicated to fostering
+          the scientific curiosity and problem-solving acumen of aspiring young minds.
+        </p>
+        <p class="mb-4">
+          <strong>Eligibility Criteria:</strong> This competition exclusively welcomes students currently
+          enrolled in grades VIII to XII, with the explicit objective of acknowledging and nurturing their
+          creative potential.
+        </p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <i data-feather="users" class="w-5 h-5 text-sky-400"></i>
+            Present projects to esteemed researchers and guests.
+          </li>
+          <li class="flex items-start gap-2">
+            <i data-feather="book-open" class="w-5 h-5 text-sky-400"></i>
+            Immerse in IIT Kharagpur's scientific environment.
+          </li>
+          <li class="flex items-start gap-2">
+            <i data-feather="star" class="w-5 h-5 text-sky-400"></i>
+            Join YIP'24 and shine.
+          </li>
+        </ul>
+      </div>
+      <div class="bg-sky-400/5 border border-gray-500/20 p-6 rounded-2xl shadow-lg">
+        <p>
+          Top teams nationwide will be selected after the first round and they will be called to
+          Indian Institute of Technology, Kharagpur to exhibit and demonstrate their models or
+          prototype and charts which will be evaluated by professors of IIT Kharagpur.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="timeline" class="relative isolate py-20">
+    <div class="absolute inset-0 bg-cover bg-center grayscale contrast-105 -z-20" style="background-image:url('33304c2c-d9dd-4a5d-a839-d1e498a6813d.png');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#020617]/60 to-[#020617]/90 -z-10"></div>
+    <div class="w-[92%] max-w-[1100px] mx-auto">
+      <h2 class="text-3xl font-semibold text-white mb-10">Event Timeline</h2>
+      <div class="relative border-l-2 border-gray-500/40 pl-4">
+        
+        <!-- Item -->
+        <article class="relative mb-8 pl-5">
+          <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-500/30"></div>
+          <div class="bg-[#0f172a]/70 border border-gray-500/30 backdrop-blur-md p-4 rounded-xl">
+            <h3 class="text-lg font-semibold mb-2">Registration</h3>
+            <p>The principal needs to nominate a coordinating teacher...</p>
+            <span class="inline-block mt-2 text-sm font-bold px-3 py-1 rounded-lg bg-sky-500/20 border border-sky-500/40 text-sky-100">Start</span>
+          </div>
+        </article>
+
+        <!-- Item -->
+        <article class="relative mb-8 pl-5">
+          <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-500/30"></div>
+          <div class="bg-[#0f172a]/70 border border-gray-500/30 backdrop-blur-md p-4 rounded-xl">
+            <h3 class="text-lg font-semibold mb-2">Round 1</h3>
+            <p>Round I Submission Starts... Selected students will proceed to round 2.</p>
+            <span class="inline-block mt-2 text-sm font-bold px-3 py-1 rounded-lg bg-sky-500/20 border border-sky-500/40 text-sky-100">27th Oct - 15th Dec 2025</span>
+          </div>
+        </article>
+
+        <!-- Item -->
+        <article class="relative mb-8 pl-5">
+          <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-500/30"></div>
+          <div class="bg-[#0f172a]/70 border border-gray-500/30 backdrop-blur-md p-4 rounded-xl">
+            <h3 class="text-lg font-semibold mb-2">Round 2 (Semifinal) @ IIT Kharagpur</h3>
+            <p>Top teams nationwide will be selected after the first round...</p>
+            <span class="inline-block mt-2 text-sm font-bold px-3 py-1 rounded-lg bg-sky-500/20 border border-sky-500/40 text-sky-100">11th Jan 2025</span>
+          </div>
+        </article>
+
+        <!-- Item -->
+        <article class="relative mb-8 pl-5">
+          <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-500/30"></div>
+          <div class="bg-[#0f172a]/70 border border-gray-500/30 backdrop-blur-md p-4 rounded-xl">
+            <h3 class="text-lg font-semibold mb-2">Round 3 (Final) @ IIT Kharagpur</h3>
+            <p>The qualifying teams from the second round will be qualified...</p>
+            <span class="inline-block mt-2 text-sm font-bold px-3 py-1 rounded-lg bg-sky-500/20 border border-sky-500/40 text-sky-100">12th Jan 2025</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-12">
+    <h1 class="text-center text-3xl font-semibold mb-6">Gallery</h1>
+    <div class="relative w-[700px] h-[400px] max-w-full mx-auto overflow-hidden rounded-xl" id="slider">
+      <div class="absolute inset-0 opacity-100 transition-opacity duration-700 gallery-slide active">
+        <img src="images/gallery_1.jpg" class="w-full h-full object-cover rounded-xl" />
+      </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-700 gallery-slide">
+        <img src="images/gallery_2.jpg" class="w-full h-full object-cover rounded-xl" />
+      </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-700 gallery-slide">
+        <img src="images/gallery_3.jpg" class="w-full h-full object-cover rounded-xl" />
+      </div>
+      <button class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded cursor-pointer z-10" onclick="changeSlide(-1)">⟨</button>
+      <button class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded cursor-pointer z-10" onclick="changeSlide(1)">⟩</button>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16">
+    <h2 id="testimonial" class="text-center text-3xl font-bold mb-8">Testimonials</h2>
+    <div class="w-4/5 mx-auto overflow-hidden">
+      <div class="flex transition-transform duration-500" id="sliderTrack">
+        <div class="w-full flex-shrink-0 text-center px-4">
+          <img src="images/ShamrockInternationalSchool.jpg" class="w-[470px] h-[300px] mx-auto object-cover rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold">Shamrock International School (YIP 2023)</h3>
+          <p class="max-w-md mx-auto text-sm mt-2">We thank the entire team of SBRC for the initiative...</p>
+          <p class="italic mt-3">- Mrs AK Sindhu</p>
+        </div>
+        <div class="w-full flex-shrink-0 text-center px-4">
+          <img src="images/NHGoelSchool.jpeg.jpg" class="w-[470px] h-[300px] mx-auto object-cover rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold">NH GOEL SCHOOL (YIP 2023)</h3>
+          <p class="max-w-md mx-auto text-sm mt-2">Big thanks to Team SBRC for hosting such a great event...</p>
+          <p class="italic mt-3">- Mrs AK Sindhu</p>
+        </div>
+        <div class="w-full flex-shrink-0 text-center px-4">
+          <img src="images/AtomicEnergyCentralSchool.jpg" class="w-[470px] h-[300px] mx-auto object-cover rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold">Atomic Energy Central School (YIP 2023)</h3>
+          <p class="max-w-md mx-auto text-sm mt-2">Thank you so much for all the help extended to us...</p>
+          <p class="italic mt-3">- Mrs AK Sindhu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Query -->
+  <section class="bg-black/60 bg-[url('assets/sbrc-2024-team.jpg')] bg-cover bg-center py-16 text-white flex justify-center">
+    <div class="w-full max-w-lg  p-6 rounded-lg">
+      <span class="block w-28 mx-auto text-center bg-teal-600 py-2 rounded text-sm font-semibold mb-4">Query</span>
+      <h1 class="text-center text-2xl font-semibold mb-6">Have any doubts?</h1>
+      <form class="space-y-4">
+        <input type="text" placeholder="Name" class="w-full p-3 rounded-md text-black" required/>
+        <div class="flex gap-3 flex-col sm:flex-row w-full">
+          <input type="email" placeholder="Email" class="w-1/2 p-3 rounded-md text-black" required/>
+          <input type="tel" placeholder="Phone No." class="w-1/2 p-3 rounded-md text-black" required/>
+        </div>
+        <textarea rows="4" placeholder="Enter your query..." class="w-full p-3 rounded-md text-black" required></textarea>
+        <button type="submit" class="block mx-auto w-1/3 py-3 bg-teal-600 hover:bg-teal-700 rounded-md">Send Query</button>
+      </form>
+    </div>
+  </section>
+  <footer class="bg-gray-950  text-center text-gray-400">
+      <%- include('partials/footer') %>
+    </footer>
+
+  <script src="JS/home.js"> </script>
+</body>
+</html>

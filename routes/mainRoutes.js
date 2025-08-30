@@ -11,12 +11,13 @@ const jwt = require("jsonwebtoken");
 const Team = require("../models/team.js");
 
 router.get("/", (req, res) => {
-  res.render("main");
+  res.render("home");
 });
 
 router.get("/register", (req, res) => {
   res.render("signup", { flashMessage: null });
 });
+
 
 router.get("/userpanel", isLoggedIn, async (req, res) => {
   try {
@@ -27,6 +28,10 @@ router.get("/userpanel", isLoggedIn, async (req, res) => {
     console.error(err);
     res.status(500).send("Error fetching notices");
   }
+})
+router.get("/userpanel", isLoggedIn, (req, res) => {
+  res.render("userpanel",{});
+
 });
 router.get("/admin/result", isLoggedIn, async (req, res) => {
   let teams = await ResultModel.find();

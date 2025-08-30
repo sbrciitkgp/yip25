@@ -3,9 +3,12 @@ const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-
+const dotenv=require("dotenv")
 const connectDB = require("./config/db");
 const mainRoutes = require("./routes/mainRoutes"); 
+
+require("dotenv").config();
+
 
 connectDB();
 
