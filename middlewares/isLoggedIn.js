@@ -10,6 +10,8 @@ const isLoggedIn = (req, res, next) => {
     const decoded = jwt.verify(token, "shhhs");
     
     req.user = decoded; 
+    
+
     next();
   } catch (err) {
     console.error(err);

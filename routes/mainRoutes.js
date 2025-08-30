@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userModel = require("../models/user");
+const userModel = require("../models/user.js");
 const noticeModel = require("../models/notice");
 const TeamModel = require("../models/team.js");
 const ResultModel = require("../models/result");
@@ -18,10 +18,16 @@ router.get("/register", (req, res) => {
   res.render("signup", { flashMessage: null });
 });
 
-router.get("/userpanel", isLoggedIn, (req, res) => {
-  res.render("userpanel");
+router.get("/userpanel", isLoggedIn, async (req, res) => {
+  try {
+    const user = await userModel.findById(req.user.id);
+    const notices = await noticeModel.find().sort({ createdAt: -1 });
+    res.render("userpanel", { notices, user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching notices");
+  }
 });
-
 router.get("/admin/result", isLoggedIn, async (req, res) => {
   let teams = await ResultModel.find();
   res.render("adminresult", { teams });
@@ -286,6 +292,7 @@ router.post("/user/create", async (req, res) => {
 
 router.post("/user/login", async (req, res) => {
   const { TeamName, Password } = req.body;
+  console.log(TeamName, Password);
 
   if (TeamName === "yip26") {
     if (Password === "sbrc@yip26") {
@@ -312,8 +319,21 @@ router.post("/user/login", async (req, res) => {
       "shhhs"
     );
     res.cookie("token", token);
-    res.redirect("/");
+    res.redirect("/userpanel");
   }
 });
+
+router.post('/userpanel/showfields', isLoggedIn, async (req, res) => {
+  const count = parseInt(req.body.count, 10);
+  const user = await userModel.findById(req.user.id);
+    const notices = await noticeModel.find().sort({ createdAt: -1 });
+    res.render("userpanel", { notices, user, count }); // re-render same page with count
+});
+
+router.post('/userpanel/submitfields', (req, res) => {
+  console.log(req.body); // you'll get all submitted fields
+  res.send('Form submitted successfully!');
+});
+
 
 module.exports = router;
