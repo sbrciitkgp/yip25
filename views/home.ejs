@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YIP-26</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
@@ -12,6 +13,10 @@
   </style>
 </head>
 <body class="bg-[#0b1120] text-gray-200">
+
+  <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
+      <%- include('partials/navbar') %>
+    </nav>
 
   <!-- Hero -->
   <section id="home" class="relative min-h-[72vh] grid place-items-center isolate">
@@ -179,6 +184,9 @@
       </form>
     </div>
   </section>
+  <footer class="bg-gray-950  text-center text-gray-400">
+      <%- include('partials/footer') %>
+    </footer>
 
   <script src="JS/home.js"> </script>
 </body>
