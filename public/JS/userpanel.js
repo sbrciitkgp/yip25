@@ -6,6 +6,8 @@ function generateInputs() {
     if (count > 4) count = 4;
     if (count < 1) count = 1;
 
+    
+
   for (let i = 1; i <= count; i++) {
     const input = document.createElement("input");
     input.type = "text";

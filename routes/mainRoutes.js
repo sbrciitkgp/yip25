@@ -29,10 +29,7 @@ router.get("/userpanel", isLoggedIn, async (req, res) => {
     res.status(500).send("Error fetching notices");
   }
 })
-router.get("/userpanel", isLoggedIn, (req, res) => {
-  res.render("userpanel",{});
 
-});
 router.get("/admin/result", isLoggedIn, async (req, res) => {
   let teams = await ResultModel.find();
   res.render("adminresult", { teams });
@@ -332,7 +329,7 @@ router.post('/userpanel/showfields', isLoggedIn, async (req, res) => {
   const count = parseInt(req.body.count, 10);
   const user = await userModel.findById(req.user.id);
     const notices = await noticeModel.find().sort({ createdAt: -1 });
-    res.render("userpanel", { notices, user, count }); // re-render same page with count
+    res.render("userpanel", { notices, user, count }); 
 });
 
 router.post('/userpanel/submitfields', (req, res) => {
