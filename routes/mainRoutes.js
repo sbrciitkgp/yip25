@@ -29,10 +29,9 @@ router.get("/userpanel", isLoggedIn, async (req, res) => {
     res.status(500).send("Error fetching notices");
   }
 })
-router.get("/userpanel", isLoggedIn, (req, res) => {
-  res.render("userpanel",{});
 
-});
+
+
 router.get("/admin/result", isLoggedIn, async (req, res) => {
   let teams = await ResultModel.find();
   res.render("adminresult", { teams });
@@ -215,10 +214,6 @@ router.post("/admin/result/round3", async (req, res) => {
 });
 
 
-router.post("/userpanel/mentor", (req, res) => {
-  const count = parseInt(req.body.count);
-  res.render("123", { count });
-});
 
 router.post("/admin/allotpoc", isLoggedIn, async (req, res) => {
   const teams = req.body.teams;
@@ -329,7 +324,7 @@ router.post("/user/login", async (req, res) => {
 });
 
 router.post('/userpanel/showfields', isLoggedIn, async (req, res) => {
-  const count = parseInt(req.body.count, 10);
+  const count = parseInt(req.body.count, 4);
   const user = await userModel.findById(req.user.id);
     const notices = await noticeModel.find().sort({ createdAt: -1 });
     res.render("userpanel", { notices, user, count }); // re-render same page with count
@@ -339,6 +334,28 @@ router.post('/userpanel/submitfields', (req, res) => {
   console.log(req.body); // you'll get all submitted fields
   res.send('Form submitted successfully!');
 });
+router.get("/userpanel/result", isLoggedIn, async (req, res) => {
+  let teams = await ResultModel.find();
+  res.render("result", { teams });
+});
+router.get('/userpanel/mentor', (req,res) => {
+  res.render("teammentor");
+})
+router.get('/userpanel/team', (req,res) => {
+  res.render("team");
+})
+router.get('/userpanel/participants', (req,res) => {
+  res.render("participants");
+})
+router.get("/userpanel/notice", isLoggedIn, async (req, res) => {
+  try {
+    const notices = await noticeModel.find().sort({ createdAt: -1 });
+    res.render("notice", { notices});
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching notices");
+  }
+})
 
 
 module.exports = router;

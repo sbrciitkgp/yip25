@@ -10,75 +10,41 @@
 
 <body class="min-h-screen bg-gray-200 text-gray-900">
   <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
-      <%- include('partials/navbar') %>
-    </nav>
+    <%- include('partials/navbar') %>
+  </nav>
   <section class="flex flex-col md:flex-row h-full">
     <div class="leftside md:block hidden md:w-1/3 bg-gray-900 min-h-screen ">
       <nav class="space-y-3 p-3 text-sm font-medium bg-gray-900 h-full text-white">
-        <h2 class="text-2xl font-bold mb-6">User Panel</h2>
+        <h2 class="text-2xl font-bold mb-6">Teams</h2>
         <a href="/userpanel" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Dashboard</a>
-        <a href="/" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Team</a>
-        <a href="/" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Mentor</a>
-        <a href="/notice" class="block p-2 px-3 rounded hover:bg-gray-700 transition"> Notice</a>
-        <a href="/result" class=" px-3 block p-2 rounded hover:bg-gray-700 transition"> Result</a>
+        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">My Team</a>
+        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Itenary</a>
+        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Your POC</a>
+        <a href="/userpanel/notice" class="block p-2 px-3 rounded hover:bg-gray-700 transition"> Notices</a>
+        <a href="userpanel/result" class=" px-3 block p-2 rounded hover:bg-gray-700 transition"> Result</a>
       </nav>
 
     </div>
-    <div class="mid m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full ">
+    <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full ">
       <div>
         <h1 class=""> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptate eveniet architecto
           fugit dolore
           assumenda magni odit, expedita molestias porro accusantium beatae dicta blanditiis quisquam sequi, praesentium
           nam debitis soluta vitae amet corrupti sit aperiam accusamus dignissimos. Dolorem, fugit vero.</h1>
         <h1 class="text-2xl font-bold ">
-          WELCOME <%= user.TeamName %>
+          WELCOME TEAM : <%= user.TeamName %>
         </h1>
       </div>
-      <div>
-        <!-- First form: get the number -->
-        <form action="/userpanel/showfields" method="POST">
-          <label>How many fields?</label>
-          <input class="w-full gap-4 my-2 bg-blue-100 border border-black/80 text-black placeholder-black px-4 py-2 rounded-md " placeholder="Number of Participants" type="number" name="count" required>
-          <button type="submit" class="text-center font-bold border-black p-2 my-2 bg-blue-100 border border-black/80 text-black px-4 py-2 rounded-md" >Generate Fields</button>
-        </form>
-
-      
-
-        <!-- Second form: show fields only if count is set -->
-        <% if (typeof count !=='undefined' && count> 0) { %>
-          <form action="/userpanel/submitfields" method="POST" class="flex-col">
-            <% for(let i=0; i < count; i++) { %>
-              <label class="text-center p-6">Participant's <%= i+1 %> Details</label>
-              
-              <input class="w-full gap-4 my-2 bg-blue-100 border border-black/80 text-black placeholder-black px-4 py-2 rounded-md " placeholder="Participant's name" type="text" name="name<%= i %>" required>
-              <input class="w-full gap-4 my-2 bg-blue-100 border border-black/80 text-black placeholder-black px-4 py-2 rounded-md " type="number" placeholder="Participant's Class" name="class<%= i %>" required>
-              <input class="w-full my-2 bg-blue-100 border border-black/80 text-black placeholder-black px-4 py-2 rounded-md " type="tel" placeholder="Participant's Phone" name="phone<%= i %>" required>
-              <input class="w-full my-2 bg-blue-100 border border-black/80 text-black placeholder-black px-4 py-2 rounded-md " type="email" placeholder="Participant's email" name="email<%= i %>" required>
-              <br>
-              <% } %>
-                <button class="text-center font-bold border-black p-2 my-2 bg-blue-100 border border-black/80 text-black px-4 py-2 rounded-md" type="submit">Submit</button>
-          </form>
-          <% } %>
-
-      </div>
+      <br>
+      <a href="/userpanel/Participants">
+        <div class="bg-blue-500 text-white px-3 py-1 w-1/2 text-center rounded hover:bg-red-600 transition">
+          <button>Add Your Participants</button>
+        </div>
+      </a>
+        
 
 
-    </div>
-    <div class="rightside m-4 pb-1 rounded-lg  hidden md:block md:w-1/4 bg-blue-100 ">
-      <h2 class="text-2xl font-bold py-2 text-center mb-4">Notices</h2>
-      <ul class="space-y-3 px-1 ">
-        <% notices.forEach(notice=> { %>
-          <li class="bg-gray-100 p-3 rounded-md shadow-sm hover:bg-gray-200 transition">
-            <p class="font-medium mb-1">
-              <%= notice.content %>
-            </p>
-            <p class="text-xs text-gray-500 mb-3">
-              <%= notice.createdAt.toDateString() %>
-            </p>
 
-          </li>
-          <% }) %>
-      </ul>
     </div>
 
   </section>

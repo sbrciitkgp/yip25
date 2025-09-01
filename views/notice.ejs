@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
+      <%- include('partials/navbar') %>
+    </nav>
+    <div class="rightside pb-1 rounded-lg  hidden md:block w-full bg-blue-100 ">
+      <h2 class="text-2xl font-bold py-2 text-center mb-4">Notices</h2>
+      <ul class="space-y-3 px-1 ">
+        <% notices.forEach(notice=> { %>
+          <li class="bg-gray-100 p-3 rounded-md shadow-sm hover:bg-gray-200 transition">
+            <p class="font-medium mb-1">
+              <%= notice.content %>
+            </p>
+            <p class="text-xs text-gray-500 mb-3">
+              <%= notice.createdAt.toDateString() %>
+            </p>
+
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+
+  </section>
+  <div class="footer">
+    <%- include('partials/footer') %>
+  </div>
+</body>
+</html>
