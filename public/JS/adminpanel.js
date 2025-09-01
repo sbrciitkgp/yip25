@@ -1,14 +1,23 @@
-const hamburger = document.getElementById("hamburger");
+const adminhamburger = document.getElementById("adminhamburger");
       const side = document.getElementById("side");
+      const close = document.getElementById("close");
 
       
-      hamburger.addEventListener("click", () => {
+      adminhamburger.addEventListener("click", () => {
+        console.log("Hamburger was clicked")
+        close.classList.toggle("hidden");
+        adminhamburger.classList.toggle("hidden");
         side.classList.toggle("hidden");
-        side.classList.toggle("fixed");
         side.classList.toggle("z-40");
         side.classList.toggle("h-screen");
-        side.classList.toggle("top-15");
-        side.classList.toggle("left-0");
+      });
+       
+      close.addEventListener("click", () => {
+        adminhamburger.classList.toggle("hidden");
+        close.classList.toggle("hidden");
+        side.classList.toggle("hidden");
+        side.classList.toggle("z-40");
+        side.classList.toggle("h-screen");
       });
 
       

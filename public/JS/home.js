@@ -1,20 +1,52 @@
-feather.replace();
+const track = document.getElementById("sliderTrack");
+const testimonialSlides = track.querySelectorAll("div");
+let testimonialIndex = 0;
 
-    // Testimonial slider
-    const track = document.getElementById("sliderTrack");
-    const testimonialSlides = track.querySelectorAll("div");
-    let testimonialIndex = 0;
-    function goToSlide(i){ track.style.transform = `translateX(-${i * 100}%)`; }
-    function nextTestimonial(){ testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length; goToSlide(testimonialIndex);}
-    setInterval(nextTestimonial, 4000);
+function goToSlide(i) {
+  track.style.transform = `translateX(-${i * 100}%)`;
+}
 
-    // Gallery slider
-    const gallery = document.getElementById("slider");
-    const gallerySlides = gallery.querySelectorAll(".gallery-slide");
-    let current = 0, timer;
-    const showSlide = (i)=>{ gallerySlides.forEach(s=>s.classList.remove("opacity-100","z-10")); gallerySlides[i].classList.add("opacity-100","z-10"); };
-    const changeSlide = (dir)=>{ current = (current+dir+gallerySlides.length)%gallerySlides.length; showSlide(current); };
-    const autoSlide = ()=>{ timer=setInterval(()=>changeSlide(1),2000); };
-    gallery.addEventListener("mouseenter",()=>clearInterval(timer));
-    gallery.addEventListener("mouseleave",autoSlide);
-    autoSlide();
+function nextTestimonial() {
+  testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
+  goToSlide(testimonialIndex);
+}
+
+// Auto play testimonials
+setInterval(nextTestimonial, 4000);
+
+
+// ===============================
+// Gallery Slider
+// ===============================
+const slides = document.querySelectorAll("#slider .slide");
+let current = 0;
+let timer;
+
+function showSlide(i) {
+  slides.forEach((s, idx) => {
+    s.classList.remove("opacity-100", "z-10");
+    s.classList.add("opacity-0", "z-0");
+    if (idx === i) {
+      s.classList.add("opacity-100", "z-10");
+      s.classList.remove("opacity-0", "z-0");
+    }
+  });
+}
+
+function changeSlide(dir) {
+  current = (current + dir + slides.length) % slides.length;
+  showSlide(current);
+}
+
+function autoSlide() {
+  timer = setInterval(() => changeSlide(1), 3000);
+}
+
+// Pause on hover
+const slider = document.getElementById("slider");
+slider.addEventListener("mouseenter", () => clearInterval(timer));
+slider.addEventListener("mouseleave", autoSlide);
+
+// Start
+showSlide(current);
+autoSlide();
