@@ -73,7 +73,7 @@
 
   <!-- Timeline -->
   <section id="timeline" class="relative isolate py-20">
-    <div class="absolute inset-0 bg-cover bg-center grayscale contrast-105 -z-20" style="background-image:url('33304c2c-d9dd-4a5d-a839-d1e498a6813d.png');"></div>
+    <div class="absolute inset-0 bg-cover bg-center grayscale contrast-105 -z-20" ></div>
     <div class="absolute inset-0 bg-gradient-to-b from-[#020617]/60 to-[#020617]/90 -z-10"></div>
     <div class="w-[92%] max-w-[1100px] mx-auto">
       <h2 class="text-3xl font-semibold text-white mb-10">Event Timeline</h2>
@@ -125,20 +125,33 @@
 
   <!-- Gallery -->
   <section class="py-12">
-    <h1 class="text-center text-3xl font-semibold mb-6">Gallery</h1>
-    <div class="relative w-[700px] h-[400px] max-w-full mx-auto overflow-hidden rounded-xl" id="slider">
-      <div class="absolute inset-0 opacity-100 transition-opacity duration-700 gallery-slide active">
-        <img src="images/gallery_1.jpg" class="w-full h-full object-cover rounded-xl" />
-      </div>
-      <div class="absolute inset-0 opacity-0 transition-opacity duration-700 gallery-slide">
-        <img src="images/gallery_2.jpg" class="w-full h-full object-cover rounded-xl" />
-      </div>
-      <div class="absolute inset-0 opacity-0 transition-opacity duration-700 gallery-slide">
-        <img src="images/gallery_3.jpg" class="w-full h-full object-cover rounded-xl" />
-      </div>
-      <button class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded cursor-pointer z-10" onclick="changeSlide(-1)">⟨</button>
-      <button class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded cursor-pointer z-10" onclick="changeSlide(1)">⟩</button>
+    
+  <h1 class="text-center my-6 font-[Montserrat] text-3xl font-semibold">Gallery</h1>
+
+  <div class="relative w-[700px] h-[400px] mx-auto overflow-hidden rounded-xl shadow-lg" id="slider">
+    <!-- Slides -->
+    <div class="absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out slide active">
+      <img src="images/gallery_1.jpg" alt="Gallery 1" class="w-full h-full object-cover rounded-lg">
     </div>
+    <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+      <img src="images/gallery_2.jpg" alt="Gallery 2" class="w-full h-full object-cover rounded-lg">
+    </div>
+    <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+      <img src="images/gallery_3.jpg" alt="Gallery 3" class="w-full h-full object-cover rounded-lg">
+    </div>
+
+    <!-- Buttons -->
+    <button 
+      class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-full hover:bg-black/70 transition z-10" 
+      onclick=changeSlide(-1)>
+      ⟨
+    </button>
+    <button 
+      class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-full hover:bg-black/70 transition z-10" 
+      onclick=changeSlide(1)>
+      ⟩
+    </button>
+  </div>
   </section>
 
   <!-- Testimonials -->
@@ -168,8 +181,8 @@
     </div>
   </section>
 
-  <!-- Query -->
-  <section class="bg-black/60 bg-[url('assets/sbrc-2024-team.jpg')] bg-cover bg-center py-16 text-white flex justify-center">
+  <!-- Query --> 
+  <section class="bg-black/60  bg-cover bg-center py-16 text-white flex justify-center ">
     <div class="w-full max-w-lg  p-6 rounded-lg">
       <span class="block w-28 mx-auto text-center bg-teal-600 py-2 rounded text-sm font-semibold mb-4">Query</span>
       <h1 class="text-center text-2xl font-semibold mb-6">Have any doubts?</h1>
@@ -188,6 +201,6 @@
       <%- include('partials/footer') %>
     </footer>
 
-  <script src="JS/home.js"> </script>
+  <script src="JS/home.js"></script>
 </body>
 </html>

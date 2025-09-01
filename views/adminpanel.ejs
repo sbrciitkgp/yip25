@@ -15,10 +15,11 @@
     <div class="flex flex-col md:flex-row h-full">
 
       <aside
-        class="hidden md:block md:w-1/5 bg-gray-900 text-white p-6 space-y-4 shadow-lg"
+        class="hidden w-[200px] md:block md:w-1/5 bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed min-h-screen"
         id="side"
       >
-        <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+        <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div></h2>
+        
         <nav class="space-y-3 text-sm font-medium">
           <a href="/adminpanel" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
           <a href="/admin/teams" class="block p-2 rounded hover:bg-gray-700 transition">Teams</a>
@@ -29,10 +30,11 @@
       </aside>
 
 
-      <div id="hamburger" class="md:hidden fixed z-40">
-        <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer" />
+      <div  class="">
+        <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger"/>
       </div>
 
+<div class="md:w-1/5 p-5 mx-5"></div>
 
       <main class="flex flex-col md:flex-row w-full p-6 gap-6">
 
