@@ -10,6 +10,12 @@
   <body
     class="bg-gradient-to-br from-black to-gray-900 flex flex-col relative font-sans"
   >
+   <nav
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-transparent max-w-screen"
+    >
+      <%- include('partials/navbar') %>
+    </nav>
+    
     <% if (flashMessage) { %>
     <div
       id="flash"

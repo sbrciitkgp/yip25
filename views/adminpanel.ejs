@@ -8,14 +8,14 @@
   </head>
   <body class="min-h-screen bg-gray-100 text-gray-900">
 
-    <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
+    <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-slate-900 shadow">
       <%- include('partials/navbar') %>
     </nav>
 
     <div class="flex flex-col md:flex-row h-full">
 
       <aside
-        class="hidden w-[200px] md:block md:w-1/5 bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed min-h-screen"
+        class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed min-h-screen z-10"
         id="side"
       >
         <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div></h2>
@@ -34,7 +34,7 @@
         <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger"/>
       </div>
 
-<div class="md:w-1/5 p-5 mx-5"></div>
+<div class="md:w-[200px] p-5 mx-5"></div>
 
       <main class="flex flex-col md:flex-row w-full p-6 gap-6">
 

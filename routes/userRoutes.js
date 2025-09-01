@@ -4,10 +4,10 @@ const { getUserPanel, getParticipants, showFields, submitFields, submitParticipa
 const isLoggedIn = require("../middlewares/isLoggedIn");
 const { route } = require("./mainRoutes");
 
-router.get("/userpanel", isLoggedIn, getUserPanel);
-router.get("/userpanel/participants", isLoggedIn, getParticipants);
-router.post("/userpanel/showfields", isLoggedIn, showFields);
-router.post("/userpanel/submitfields", submitFields);
-router.post("/userpanel/participants",isLoggedIn, submitParticipants);
+router.get("/team", isLoggedIn, getUserPanel);
+router.get("/team/participants", isLoggedIn, getParticipants);
+router.post("/team/showfields", isLoggedIn, showFields);
+router.post("/team/submitfields", submitFields);
+router.post("/team/participants",isLoggedIn, submitParticipants);
 
 module.exports = router;

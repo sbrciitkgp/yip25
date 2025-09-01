@@ -24,71 +24,131 @@
     </script>
     <title>Messages</title>
   </head>
-  <body class="bg-slate-800 flex flex-col h-screen relative">
-    <nav class="sticky flex top-0 z-50 justify-between items-center p-4 bg-slate-900 text-slate-100 w-screen">
+  <body class="bg-white flex flex-col h-screen relative">
+    <nav
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-slate-900 text-slate-100 w-screen"
+    >
       <%- include('partials/navbar') %>
     </nav>
-    
+
     <div>
-      <h1 class="text-center w-full p-4 font-bold text-4xl mb-2 text-white">MESSAGES</h1>
+      <h1 class="text-center w-full p-4 font-bold text-4xl mb-2 text-white">
+        MESSAGES
+      </h1>
     </div>
 
-    <section class="flex-1 flex flex-col justify-center items-center">
-
-
-      <div class="fixed w-8 h-8 rounded-full top-[55vh] md:left-[19vw] left-[15vw] cursor-pointer bg-gray-400 prev p-2 z-50">
+    <section class="flex-1 flex flex-col justify-center items-center relative">
+      <div
+        class="absolute w-8 h-8 rounded-full top-26 md:left-[19vw] left-[15vw] cursor-pointer bg-transparent prev p-2 z-10"
+      >
         <img src="images/back.png" alt="" />
       </div>
 
-
-      <div class="fixed w-8 h-8 rounded-full top-[55vh] md:right-[19vw] right-[15vw] cursor-pointer bg-gray-400 next p-2 z-50">
+      <div
+        class="absolute w-8 h-8 rounded-full top-26 md:right-[19vw] right-[15vw] cursor-pointer bg-transparent next p-2 z-10"
+      >
         <img src="images/next.png" alt="" />
       </div>
 
-
-      <div class=" shadow-lg shadow-slate-900/20 border border-slate-200 messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800">
+      <div
+        class="shadow-lg shadow-slate-900/20 border border-slate-200 messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
+      >
         <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify text-slate-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quo sint maiores...</p>
+          <p class="text-justify text-slate-700">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quo
+            sint maiores...
+          </p>
         </div>
-        <div class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]">
-          <img src="images/rm.png" alt="" width="150px" height="150px" class="rounded-lg" />
-          <h1 class="text-2xl font-bold text-slate-900">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-slate-600 font-semibold">Dean, International Relations, IIT Kharagpur</h4>
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold text-slate-900">
+            Prof Rabibrata Mukherjee
+          </h1>
+          <h4 class="text-md text-slate-600 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
         </div>
       </div>
 
-      <div class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800">
-        
+      <div
+        class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
+      >
         <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur debitis rem earum...</p>
+          <p class="text-justify">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Consectetur debitis rem earum...
+          </p>
         </div>
-        <div class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]">
-          <img src="images/rm.png" alt="" width="150px" height="150px" class="rounded-lg" />
-          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-gray-600 font-semibold">Dean, International Relations, IIT Kharagpur</h4>
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold text-emerald-700">
+            Prof Rabibrata Mukherjee
+          </h1>
+          <h4 class="text-md text-gray-600 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
         </div>
       </div>
 
-      <div class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800">
-        
+      <div
+        class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
+      >
         <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur officia sequi facere...</p>
+          <p class="text-justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            officia sequi facere...
+          </p>
         </div>
-        <div class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]">
-          <img src="images/rm.png" alt="" width="150px" height="150px" class="rounded-lg" />
-          <h1 class="text-2xl font-bold text-emerald-700">Prof Rabibrata Mukherjee</h1>
-          <h4 class="text-md text-gray-600 font-semibold">Dean, International Relations, IIT Kharagpur</h4>
+        <div
+          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+        >
+          <img
+            src="images/rm.png"
+            alt=""
+            width="150px"
+            height="150px"
+            class="rounded-lg"
+          />
+          <h1 class="text-2xl font-bold text-emerald-700">
+            Prof Rabibrata Mukherjee
+          </h1>
+          <h4 class="text-md text-gray-600 font-semibold">
+            Dean, International Relations, IIT Kharagpur
+          </h4>
         </div>
       </div>
 
-      
       <div class="btns flex gap-6 m-4">
-        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"></span>
-        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"></span>
-        <span class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"></span>
+        <span
+          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
+        ></span>
+        <span
+          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
+        ></span>
+        <span
+          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
+        ></span>
       </div>
-
-      <script src="JS/messages.js"></script>
     </section>
+    <footer class="bg-gray-950 mt-16 text-center text-gray-400">
+      <%- include('partials/footer') %>
+    </footer>
+    <script src="JS/messages.js"></script>
   </body>
 </html>

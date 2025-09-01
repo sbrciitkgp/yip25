@@ -10,9 +10,9 @@
 
 <body class="min-h-screen bg-gray-200 text-gray-900">
 
-  <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-gray-800 shadow">
-    <%- include('partials/navbar') %>
-  </nav>
+  <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-slate-900 shadow">
+      <%- include('partials/navbar') %>
+    </nav>
 
 <% if (success && success.length > 0) { %>
   <div class="fixed top-9 right-2 flash bg-green-600 w-[200px] p-2 text-white rounded">
@@ -29,17 +29,27 @@
 
 
   <section class="flex flex-col md:flex-row h-full">
-    <div class="leftside md:block hidden md:w-1/3 bg-gray-900 min-h-screen ">
-      <nav class="space-y-3 p-3 text-sm font-medium bg-gray-900 h-full text-white">
-        <h2 class="text-2xl font-bold mb-6">Teams</h2>
-        <a href="/userpanel" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Dashboard</a>
-        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">My Team</a>
-        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Itenary</a>
-        <a href="/userpanel/team" class="block p-2 px-3 rounded hover:bg-gray-700 transition">Your POC</a>
-        <a href="/userpanel/notice" class="block p-2 px-3 rounded hover:bg-gray-700 transition"> Notices</a>
-        <a href="userpanel/result" class=" px-3 block p-2 rounded hover:bg-gray-700 transition"> Result</a>
-      </nav>
-    </div>
+     <aside
+        class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed h-screen z-10"
+        id="side"
+      >
+        <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div></h2>
+        
+        <nav class="space-y-3 text-sm font-medium">
+          <a href="/team" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
+          <a href="/team/yourteam" class="block p-2 rounded hover:bg-gray-700 transition">Team</a>
+          <a href="/team/yourmentor" class="block md:hidden p-2 rounded hover:bg-gray-700 transition">Your Mentor</a>
+          <a href="#notice" class="block  p-2 rounded hover:bg-gray-700 transition">Notices</a>
+          <a href="/team/result" class="block p-2 rounded hover:bg-gray-700 transition">Result</a>
+        </nav>
+      </aside>
+
+
+      <div  class="">
+        <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger"/>
+      </div>
+
+      <div class="md:w-[200px] p-5 mx-5"></div>
     <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full ">
       <div>
 
@@ -53,15 +63,16 @@
       </div>
 
       <br>
-      <a href="/userpanel/Participants">
+      <a href="/team/participants">
         <div class="bg-blue-500 text-white px-3 py-1 w-1/2 text-center rounded hover:bg-red-400 transition">
           <button>Add Your Participants</button>
         </div>
       </a>
       <div>
-  
   </section>
-  <div class="footer">
+
+  
+  <div class="footer z-60 w-full ">
     <%- include('partials/footer') %>
   </div>
 

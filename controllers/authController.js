@@ -1,15 +1,41 @@
 const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const TeamModel = require("../models/team");
+const Admin = require("../models/admin")
 const jwt = require("jsonwebtoken");
 
+exports.LoginAdmin = async (req, res) => {
+  let { Name, Password } = req.body;
+
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(Password, salt, async (err, hash) => {
+      await Admin.create({
+        Name,
+        Password: hash,
+      },);
+    });
+  });
+
+  const admintoken = jwt.sign(
+    { id: Admin._id, Name:Admin.Name },
+    "shhhs"
+  );
+  res.cookie("admintoken", admintoken);
+  res.redirect("/adminpanel");
+};
+
 exports.getLoginPage = (req, res) => {
+  if(req.cookies.token){
+    return res.redirect('team')
+  }
   res.render("login", { flashMessage: null });
 };
 
 exports.getRegisterPage = (req, res) => {
   res.render("signup", { flashMessage: null });
 };
+
+
 
 exports.registerUser = async (req, res) => {
   let {
@@ -61,11 +87,7 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { TeamName, Password } = req.body;
 
-  if (TeamName === "yip26" && Password === "sbrc@yip26") {
-    const token = jwt.sign({ MentorName: TeamName, Admin: true }, "shhhs");
-    res.cookie("token", token);
-    return res.redirect("/adminpanel");
-  }
+  
 
   const user = await userModel.findOne({ TeamName });
   if (!user)
@@ -80,10 +102,12 @@ exports.loginUser = async (req, res) => {
     "shhhs"
   );
   res.cookie("token", token);
-  res.redirect("/userpanel");
+  res.redirect("/team");
 };
 
 exports.logoutUser = (req, res) => {
   res.clearCookie("token");
   res.redirect("/");
 };
+
+module.exports = exports;

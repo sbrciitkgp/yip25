@@ -4,15 +4,14 @@ const pocModel = require("../models/poc");
 const ResultModel = require("../models/result");
 const userModel = require("../models/user");
 
+
+
 exports.getAdminPanel = async (req, res) => {
-  if (req.user.Admin) {
     const notices = await noticeModel.find({});
     const teams = await TeamModel.find({});
     const mentors = await pocModel.find({});
     res.render("adminpanel", { notices, teams, mentors });
-  } else {
-    res.redirect("/userpanel");
-  }
+  
 };
 
 exports.getMentors = async (req, res) => {

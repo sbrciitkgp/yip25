@@ -70,7 +70,7 @@ exports.submitParticipants = async (req, res) => {
 
     if (!updatedTeam) {
       req.flash("error", "Team not found");
-      return res.redirect("/userpanel");
+      return res.redirect("/team");
     }
 
     req.flash("success", "Participants Registered Successfully");
@@ -78,7 +78,7 @@ exports.submitParticipants = async (req, res) => {
   } catch (error) {
     console.error("Error submitting participants:", error);
     req.flash("error", "Error Registering Participants");
-    res.redirect("/userpanel");
+    res.redirect("/team");
   }
 };
 
