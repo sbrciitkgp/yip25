@@ -1,5 +1,6 @@
 const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
+const TeamModel = require("../models/team");
 const jwt = require("jsonwebtoken");
 
 exports.getLoginPage = (req, res) => {
@@ -11,19 +12,47 @@ exports.getRegisterPage = (req, res) => {
 };
 
 exports.registerUser = async (req, res) => {
-  let { TeamName, MentorName, MentorEmail, MentorPhone, Password, SchoolName, SchoolPhone, SchoolEmail } = req.body;
+  let {
+    TeamName,
+    MentorName,
+    MentorEmail,
+    MentorPhone,
+    Password,
+    SchoolName,
+    SchoolPhone,
+    SchoolEmail,
+  } = req.body;
 
   let user = await userModel.findOne({ MentorEmail });
   if (user) {
-    return res.render("signup", { flashMessage: "You Already have an account" });
+    return res.render("signup", {
+      flashMessage: "You Already have an account",
+    });
   }
+
+  await TeamModel.create({
+    TeamName,
+    MentorName,
+    MentorEmail,
+    MentorPhone,
+    SchoolName,
+    SchoolPhone,
+    SchoolEmail,
+  });
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(Password, salt, async (err, hash) => {
       await userModel.create({
-        TeamName, MentorName, MentorEmail, MentorPhone, SchoolName, SchoolPhone, SchoolEmail,
+        TeamName,
+        MentorName,
+        MentorEmail,
+        MentorPhone,
+        SchoolName,
+        SchoolPhone,
+        SchoolEmail,
         Password: hash,
       });
+
       res.redirect("/login");
     });
   });
@@ -39,12 +68,17 @@ exports.loginUser = async (req, res) => {
   }
 
   const user = await userModel.findOne({ TeamName });
-  if (!user) return res.render("login", { flashMessage: "Team name not found" });
+  if (!user)
+    return res.render("login", { flashMessage: "Team name not found" });
 
   const isMatch = await bcrypt.compare(Password, user.Password);
-  if (!isMatch) return res.render("login", { flashMessage: "Incorrect Password" });
+  if (!isMatch)
+    return res.render("login", { flashMessage: "Incorrect Password" });
 
-  const token = jwt.sign({ id: user._id, MentorName: user.MentorName, Admin: user.Admin }, "shhhs");
+  const token = jwt.sign(
+    { id: user._id, TeamName: user.TeamName, Admin: user.Admin },
+    "shhhs"
+  );
   res.cookie("token", token);
   res.redirect("/userpanel");
 };

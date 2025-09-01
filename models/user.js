@@ -39,7 +39,7 @@ const userSchema=mongoose.Schema({
       type:Boolean,
       default:false,
     },
-    poc: [{ type: mongoose.Schema.Types.ObjectId, ref: "poc" }]
+    poc: { type: mongoose.Schema.Types.ObjectId, ref: "poc" }
    });
 
 module.exports = mongoose.model("user",userSchema);

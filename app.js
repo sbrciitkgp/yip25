@@ -12,6 +12,18 @@ connectDB();
 
 const app = express();
 
+
+const session = require("express-session");
+const flash = require("connect-flash");
+
+app.use(session({
+  secret: "yourSecret",
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
+
+
 // ====== Middlewares ======
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,12 +1,28 @@
 const userModel = require("../models/user");
 const noticeModel = require("../models/notice");
-const TeamModel = require("../models/team")
+const TeamModel = require("../models/team");
 
 exports.getUserPanel = async (req, res) => {
   try {
     const user = await userModel.findById(req.user.id);
     const notices = await noticeModel.find().sort({ createdAt: -1 });
-    res.render("userpanel", { notices, user });
+
+    // Get flash messages
+    const success = req.flash("success");
+    const error = req.flash("error");
+
+    res.render("userpanel", { notices, user, success, error });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching notices");
+  }
+};
+
+exports.getParticipants = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.user.id);
+    await noticeModel.find().sort({ createdAt: -1 }); // (not used here but still fetching)
+    res.render("participants", { user });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching notices");
@@ -14,29 +30,56 @@ exports.getUserPanel = async (req, res) => {
 };
 
 exports.showFields = async (req, res) => {
-  const count = parseInt(req.body.count, 10);
-  const user = await userModel.findById(req.user.id);
-  const notices = await noticeModel.find().sort({ createdAt: -1 });
-  res.render("userpanel", { notices, user, count });
+  try {
+    const count = parseInt(req.body.count, 10);
+    const user = await userModel.findById(req.user.id);
+    const notices = await noticeModel.find().sort({ createdAt: -1 });
+    res.render("userpanel", { notices, user, count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error showing fields");
+  }
 };
 
 exports.submitParticipants = async (req, res) => {
-  const body=req.body;
-    const participantName=req.body.partcipantName;
-    const participantemail=req.body.participantemail;
-    const participantPhone=req.body.partcipantPhone;
-    const grade=req.body.grade;
+  try {
+    const user = req.user;
+    const { participantName, participantemail, participantPhone, grade } = req.body;
 
-    let team =await TeamModel.find({})
+    // Map arrays into members
+    const members = participantName
+      .map((name, i) => {
+        if (name && participantemail[i] && participantPhone[i] && grade[i]) {
+          return {
+            participantName: name,
+            participantEmail: participantemail[i],
+            participantPhone: participantPhone[i],
+            grade: grade[i],
+          };
+        }
+        return null;
+      })
+      .filter((m) => m !== null);
 
-    participantName.forEach(e => {
+    // Update team with members
+    const updatedTeam = await TeamModel.findOneAndUpdate(
+      { TeamName: user.TeamName }, // filter
+      { $set: { Members: members } }, // update
+      { new: true } // return updated doc
+    );
 
-        
-    });
+    if (!updatedTeam) {
+      req.flash("error", "Team not found");
+      return res.redirect("/userpanel");
+    }
 
-
-
-  console.log(body)
+    req.flash("success", "Participants Registered Successfully");
+    res.redirect("/userpanel");
+  } catch (error) {
+    console.error("Error submitting participants:", error);
+    req.flash("error", "Error Registering Participants");
+    res.redirect("/userpanel");
+  }
 };
 
 exports.submitFields = (req, res) => {
