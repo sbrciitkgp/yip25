@@ -1,5 +1,6 @@
 const userModel = require("../models/user");
 const noticeModel = require("../models/notice");
+const TeamModel = require("../models/team")
 
 exports.getUserPanel = async (req, res) => {
   try {
@@ -17,6 +18,25 @@ exports.showFields = async (req, res) => {
   const user = await userModel.findById(req.user.id);
   const notices = await noticeModel.find().sort({ createdAt: -1 });
   res.render("userpanel", { notices, user, count });
+};
+
+exports.submitParticipants = async (req, res) => {
+  const body=req.body;
+    const participantName=req.body.partcipantName;
+    const participantemail=req.body.participantemail;
+    const participantPhone=req.body.partcipantPhone;
+    const grade=req.body.grade;
+
+    let team =await TeamModel.find({})
+
+    participantName.forEach(e => {
+
+        
+    });
+
+
+
+  console.log(body)
 };
 
 exports.submitFields = (req, res) => {
