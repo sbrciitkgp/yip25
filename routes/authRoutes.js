@@ -5,7 +5,7 @@ const { getLoginPage, getRegisterPage, registerUser, loginUser, logoutUser } = r
 const isLoggedIn = require("../middlewares/isLoggedIn");
 
 router.get("/admin/login", (req,res)=>{res.render('adminlogin')});
-router.get("/login",isLoggedIn ,getLoginPage);
+router.get("/login",getLoginPage);
 router.get("/register", getRegisterPage);
 
 
