@@ -74,7 +74,7 @@ exports.submitParticipants = async (req, res) => {
     }
 
     req.flash("success", "Participants Registered Successfully");
-    res.redirect("/userpanel");
+    res.redirect("/team");
   } catch (error) {
     console.error("Error submitting participants:", error);
     req.flash("error", "Error Registering Participants");

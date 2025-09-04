@@ -40,7 +40,6 @@ const adminhamburger = document.getElementById("adminhamburger");
         adminhamburger.classList.toggle("hidden");
         side.classList.toggle("hidden");
         side.classList.toggle("z-40");
-        side.classList.toggle("h-screen");
       });
        
       close.addEventListener("click", () => {
@@ -48,7 +47,6 @@ const adminhamburger = document.getElementById("adminhamburger");
         close.classList.toggle("hidden");
         side.classList.toggle("hidden");
         side.classList.toggle("z-40");
-        side.classList.toggle("h-screen");
       });
 
       
