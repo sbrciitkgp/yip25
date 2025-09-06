@@ -29,28 +29,22 @@
 
 
   <section class="flex flex-col md:flex-row h-full">
-     <aside
-        class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed h-screen z-10"
-        id="side"
-      >
-        <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div></h2>
-        
-        <nav class="space-y-3 text-sm font-medium">
-          <a href="/team" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
-          <a href="/team/yourteam" class="block p-2 rounded hover:bg-gray-700 transition">Team</a>
-          <a href="/team/yourmentor" class="block md:hidden p-2 rounded hover:bg-gray-700 transition">Your Mentor</a>
-          <a href="#notice" class="block  p-2 rounded hover:bg-gray-700 transition">Notices</a>
-          <a href="/team/result" class="block p-2 rounded hover:bg-gray-700 transition">Result</a>
-        </nav>
-      </aside>
+     <aside class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg max-h-[calc(100vh-30px)] min-h-[calc(100vh-30px)] z-10 sticky top-[30px]" id="side">
+      <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div>
+      </h2>
+      <nav class="space-y-3 text-sm font-medium">
+        <a href="/userpanel" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
+        <a href="/user/teams" class="block p-2 rounded hover:bg-gray-700 transition">Your Team</a>
+        <a href="/user/poc" class="block p-2 rounded hover:bg-gray-700 transition">Your POC</a>
+        <a href="#notice" class="block p-2 rounded hover:bg-gray-700 transition">Notices</a>
+      </nav>
+    </aside>
 
 
-      <div  class="">
-        <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger"/>
-      </div>
-
-      <div class="md:w-[200px] p-5 mx-5"></div>
-    <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full ">
+    <div class="">
+      <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger" />
+    </div>
+    <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full overflow-y-auto">
       <div>
 
         <h1 class=""> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptate eveniet architecto
@@ -63,12 +57,34 @@
       </div>
 
       <br>
-      <a href="/team/participants">
-        <div class="bg-blue-500 text-white px-3 py-1 w-1/2 text-center rounded hover:bg-red-400 transition">
-          <button>Add Your Participants</button>
-        </div>
-      </a>
+      
+      <% if (!team.Members || team.Members.length === 0) { %>
+  <a href="/team/participants">
+    <div class="bg-blue-500 text-white px-3 py-1 w-1/2 text-center rounded hover:bg-red-400 transition">
+      <button>Add Your Participants</button>
+    </div>
+  </a>
+<% } %>
+
+      
       <div>
+       <div class=" pb-1 rounded-lg  hidden md:block w-full " id="notice">
+      <h2 class="text-2xl font-bold py-2 text-center mb-4">Notices</h2>
+      <ul class="space-y-3 px-1 ">
+        <% notices.forEach(notice=> { %>
+          <li class="bg-gray-100 p-3 rounded-md shadow-sm hover:bg-gray-200 transition">
+            <p class="font-medium mb-1">
+              <%= notice.content %>
+            </p>
+            <p class="text-xs text-gray-500 mb-3">
+              <%= notice.createdAt.toDateString() %>
+            </p>
+
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+
   </section>
 
   

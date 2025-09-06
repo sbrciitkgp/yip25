@@ -35,10 +35,6 @@ const userSchema=mongoose.Schema({
     type:String,
     required:true,
     },
-    Admin:{
-      type:Boolean,
-      default:false,
-    },
     poc: { type: mongoose.Schema.Types.ObjectId, ref: "poc" }
    });
 
