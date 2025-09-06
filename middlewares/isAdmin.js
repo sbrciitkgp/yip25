@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const AdminLoggedIn = (req, res, next) => {
+const isAdmin = (req, res, next) => {
   try {
     const admintoken = req.cookies.admintoken;
     if (!admintoken) {
@@ -16,4 +16,4 @@ const AdminLoggedIn = (req, res, next) => {
   }
 };
 
-module.exports = AdminLoggedIn;
+module.exports = isAdmin;
