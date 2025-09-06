@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const isLoggedIn = require('../middlewares/isLoggedIn')
 
-router.get("/", (req, res) => res.render("home"));
-router.get("/themes", (req, res) => res.render("themes"));
-router.get("/admin", (req, res) => res.render("adminregister"));
-router.get("/messages", (req, res) => res.render("messages"));
-router.get("/previous-editions", (req, res) => res.render("previousyip"));
+router.get("/",isLoggedIn, (req, res) => res.render("home"));
+router.get("/themes",isLoggedIn, (req, res) => res.render("themes"));
+router.get("/messages",isLoggedIn, (req, res) => res.render("messages"));
+router.get("/previous-editions",isLoggedIn, (req, res) => res.render("previousyip"));
 
 module.exports = router;
