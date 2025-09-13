@@ -6,12 +6,13 @@ exports.getUserPanel = async (req, res) => {
   try {
     const user = await userModel.findById(req.user.id);
     const notices = await noticeModel.find().sort({ createdAt: -1 });
+    const team = await TeamModel.findOne({TeamName:user.TeamName}).populate("poc");
+    console.log(team)
 
-    // Get flash messages
     const success = req.flash("success");
     const error = req.flash("error");
 
-    res.render("userpanel", { notices, user, success, error });
+    res.render("userpanel", { notices, user, success, error,team });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching notices");

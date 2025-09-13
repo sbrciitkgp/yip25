@@ -21,6 +21,21 @@ setInterval(nextTestimonial, 4000);
 const slides = document.querySelectorAll("#slider .slide");
 let current = 0;
 let timer;
+const e = document.querySelector('.nav'); 
+const scrollThreshold = 400; // distance in px
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > scrollThreshold) {
+    // when scrolled past threshold
+    e.classList.remove('bg-transparent');
+    e.classList.add('bg-gray-800');
+  } else {
+    // when above threshold
+    e.classList.remove('bg-gray-800');
+    e.classList.add('bg-transparent');
+  }
+});
+
 
 function showSlide(i) {
   slides.forEach((s, idx) => {

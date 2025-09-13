@@ -1,21 +1,33 @@
 const userModel = require("../models/user");
 const bcrypt = require("bcrypt");
 const TeamModel = require("../models/team");
-const Admin = require("../models/admin")
+const Admin = require("../models/admin");
+const flash = require("connect-flash");
 const jwt = require("jsonwebtoken");
 
 exports.LoginAdmin = async (req, res) => {
   let { Name, Password } = req.body;
-
+  if(req.cookies.admintoken){
+    return res.redirect('/adminpanel')
+  }
+  if(req.cookies.token){
+    return res.redirect('/team')
+  }
+  let user =await Admin.findOne({Name:Name})
+  console.log("I found a user",user)
+  if(user)
+  {
+    return res.send("Already have an Account")
+  }
+  console.log("Hey I am here 12")
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(Password, salt, async (err, hash) => {
-      await Admin.create({
-        Name,
+      let admin=await Admin.create({
+        Name:Name,
         Password: hash,
-      },);
+        });
     });
   });
-
   const admintoken = jwt.sign(
     { id: Admin._id, Name:Admin.Name },
     "shhhs"
@@ -87,26 +99,30 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   const { TeamName, Password } = req.body;
 
-  
-
   const user = await userModel.findOne({ TeamName });
-  if (!user)
-    return res.render("login", { flashMessage: "Team name not found" });
+  if (!user) {
+    req.flash("error", "Team name not found");
+    return res.redirect("/login");
+  }
 
   const isMatch = await bcrypt.compare(Password, user.Password);
-  if (!isMatch)
-    return res.render("login", { flashMessage: "Incorrect Password" });
+  if (!isMatch) {
+    req.flash("error", "Incorrect Password");
+    return res.redirect("/login");
+  }
 
   const token = jwt.sign(
-    { id: user._id, TeamName: user.TeamName, Admin: user.Admin },
+    { id: user._id, TeamName: user.TeamName },
     "shhhs"
   );
   res.cookie("token", token);
   res.redirect("/team");
 };
 
+
 exports.logoutUser = (req, res) => {
   res.clearCookie("token");
+  res.clearCookie("admintoken");
   res.redirect("/");
 };
 

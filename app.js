@@ -12,16 +12,29 @@ connectDB();
 
 const app = express();
 
-
 const session = require("express-session");
 const flash = require("connect-flash");
 
-app.use(session({
-  secret: "yourSecret",
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: "yourSecretKey",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 app.use(flash());
+
+// make flash messages available in all views
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash(); // store all flash types
+  next();
+});
+
+// now load setUser
+const setUser = require("./middlewares/setUser");
+app.use(setUser);
+
 
 
 // ====== Middlewares ======

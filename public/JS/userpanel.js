@@ -29,6 +29,12 @@ function generateInputs() {
 
 }
 
+ document.getElementById('register').addEventListener('click', function() {
+  console.log("clicked");
+  document.getElementById('gform').classList.toggle('hidden');
+
+    });
+
 const adminhamburger = document.getElementById("adminhamburger");
       const side = document.getElementById("side");
       const close = document.getElementById("close");

@@ -28,29 +28,23 @@
 
 
 
-  <section class="flex flex-col md:flex-row h-full">
-     <aside
-        class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg fixed h-screen z-10"
-        id="side"
-      >
-        <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div></h2>
-        
-        <nav class="space-y-3 text-sm font-medium">
-          <a href="/team" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
-          <a href="/team/yourteam" class="block p-2 rounded hover:bg-gray-700 transition">Team</a>
-          <a href="/team/yourmentor" class="block md:hidden p-2 rounded hover:bg-gray-700 transition">Your Mentor</a>
-          <a href="#notice" class="block  p-2 rounded hover:bg-gray-700 transition">Notices</a>
-          <a href="/team/result" class="block p-2 rounded hover:bg-gray-700 transition">Result</a>
-        </nav>
-      </aside>
+  <section class="flex flex-col md:flex-row">
+     <aside class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg max-h-[calc(100vh-30px)] min-h-[calc(100vh-30px)] z-10 sticky top-[30px]" id="side">
+      <h2 class="text-2xl font-bold mb-6 flex">User Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div>
+      </h2>
+      <nav class="space-y-3 text-sm font-medium">
+        <a href="/team" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
+        <a href="/user/teams" class="block p-2 rounded hover:bg-gray-700 transition">Your Team</a>
+        <a href="#poc" class="block p-2 rounded hover:bg-gray-700 transition">Your POC</a>
+        <a href="#notice" class="block p-2 rounded hover:bg-gray-700 transition">Notices</a>
+      </nav>
+    </aside>
 
 
-      <div  class="">
-        <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger"/>
-      </div>
-
-      <div class="md:w-[200px] p-5 mx-5"></div>
-    <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full ">
+    <div class="">
+      <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger" />
+    </div>
+    <div class="mid md:m-4 pb-1 rounded-lg p-4 bg-white min-h-screen w-full overflow-y-auto">
       <div>
 
         <h1 class=""> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptate eveniet architecto
@@ -62,19 +56,56 @@
         </h1>
       </div>
 
-      <br>
-      <a href="/team/participants">
-        <div class="bg-blue-500 text-white px-3 py-1 w-1/2 text-center rounded hover:bg-red-400 transition">
-          <button>Add Your Participants</button>
-        </div>
-      </a>
-      <div>
+
+<!--       
+      <% if (!team.Members || team.Members.length === 0) { %>
+  <a href="/team/participants">
+    <div class="bg-blue-500 text-white px-3 py-1 w-[200px]  text-center rounded hover:bg-red-400 transition">
+      <button>Add Your Participants</button>
+    </div>
+  </a>
+<% } %> -->
+
+
+      <div class="flex flex-col justify-center items-center p-2 rounded-md">
+        <button class="text-lg bg-red-600 text-white px-2 py-1 cursor-pointer rounded-lg mb-3" id="register">Resgister Your Team Here</button>
+        <iframe id="gform" src="https://docs.google.com/forms/d/e/1FAIpQLScIrVOKVpD595Y61sp1uKHgUT1vcYh4TUhC_DNMuTe5IwR9DA/viewform" frameborder="0" class="hidden h-[70vh] w-[500px] rounded-md"></iframe>
+      </div>
+      
+       <div class=" pb-1 rounded-lg  hidden md:block w-full " id="notice">
+      <h2 class="text-2xl font-bold py-2 text-center mb-4">Notices</h2>
+      <ul class="space-y-3 px-1 ">
+        <% notices.forEach(notice=> { %>
+          <li class="bg-gray-100 p-3 rounded-md shadow-sm hover:bg-gray-200 transition">
+            <p class="font-medium mb-1">
+              <%= notice.content %>
+            </p>
+            <p class="text-xs text-gray-500 mb-3">
+              <%= notice.createdAt.toDateString() %>
+            </p>
+
+          </li>
+          <% }) %>
+      </ul>
+    </div><div id ="poc" class="poc w-[300px] bg-green-500 text-white p-2 rounded-lg font-semibold flex justify-center flex-col items-center">
+  <h1>Your POC Details</h1>
+  <% if (team && team.poc) { %>
+    <h1>Name : <%= team.poc.name %></h1>
+    <h1>Email : <%= team.poc.email %></h1>
+    <h1>Phone : <%= team.poc.phone %></h1>
+  <% } else { %>
+    <h1>No POC assigned yet</h1>
+  <% } %>
+</div>
+
+    </div>
+
   </section>
 
   
-  <div class="footer z-60 w-full ">
+  <footer class="footer z-60 w-full ">
     <%- include('partials/footer') %>
-  </div>
+  </footer>
 
   <script src="/JS/userpanel.js"></script>
 </body>

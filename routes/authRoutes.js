@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { LoginAdmin } = require("../controllers/authController");
 const { getLoginPage, getRegisterPage, registerUser, loginUser, logoutUser } = require("../controllers/authController");
-const isLoggedIn = require("../middlewares/isLoggedIn");
+const isAdmin = require("../middlewares/isAdmin");
 
 router.get("/admin/login", (req,res)=>{res.render('adminlogin')});
 router.get("/login",getLoginPage);

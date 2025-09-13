@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-  <nav class=" w-full px-4 sm:px-6 py-2 flex items-center justify-between text-white">
+  <nav class=" w-full px-4 sm:px-6 py-2 flex items-center justify-between text-white max-h-[30px] h-[30px]">
 
     <a href="/" class="flex items-center gap-3">
       <img src="images/yiplogo.png" alt="YIP" class="w-7 h-7"/>
@@ -43,10 +43,22 @@
         </div>
       </li>
 
+<% if (user) { %>
+  <!-- If logged in -->
+  <a href="/logout" class="loglink">
+    <button class="logout  px-4 py-1 rounded-lg bg-red-700">
+      Logout
+    </button>
+  </a>
+<% } else { %>
+  <!-- If NOT logged in -->
+  <a href="/login" class="loglink">
+    <button class="login  px-4 py-1 rounded-lg bg-green-700">
+      Login
+    </button>
+  </a>
+<% } %>
 
-      <a href="/logout" class="loglink">
-        <button class=" logout bg-gray-600 px-4 py-1 rounded-lg hover:bg-red-700">Logout</button>
-      </a>
     </ul>
 
 
@@ -69,15 +81,31 @@
       <ul class="flex flex-col gap-2">
 
         <a href="/"             class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/"><li>Home</li></a>
-        <a href="/about"        class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/about"><li>About</li></a>
+        <a href="/#about"        class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/about"><li>About</li></a>
         <a href="/themes"       class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/themes"><li>Themes</li></a>
         <a href="/rulebook"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/rulebook"><li>Rule book</li></a>
-        <a href="/gallery"      class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/gallery"><li>Gallery</li></a>
-        <a href="/testimonials" class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/testimonials"><li>Testimonials</li></a>
-        <a href="/previouseditions"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/previous"><li>Previous YIP</li></a>
+        <a href="/#gallery"      class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/gallery"><li>Gallery</li></a>
+        <a href="/#testimonials" class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/testimonials"><li>Testimonials</li></a>
+        <a href="/previous-editions"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/previous"><li>Previous YIP</li></a>
         <a href="/messages"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/messages"><li>Messages</li></a>
-        <a href="/logout"       class="loglink px-3 py-2 rounded hover:bg-red-700 text-red-300"><li class="logout">Logout</li></a>
-      </ul>
+        
+<% if (user) { %>
+  <!-- If logged in -->
+  <a href="/logout" class="loglink">
+    <button class="logout  px-4 py-1 rounded-lg bg-red-700">
+      Logout
+    </button>
+  </a>
+<% } else { %>
+  <!-- If NOT logged in -->
+  <a href="/login" class="loglink">
+    <button class="login  px-4 py-1 rounded-lg bg-green-700">
+      Login
+    </button>
+  </a>
+<% } %>
+
+</ul>
     </nav>
   </aside>
 
@@ -131,19 +159,6 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSide(); });
 
     
-    const path = window.location.pathname.replace(/\/+$/, '') || '/';
-
-    if(path=='/'){
-
-      document.querySelectorAll('.loglink').forEach(e=>{
-        e.setAttribute("href", "/login");
-      })
-     document.querySelectorAll('.logout').forEach(e => {
-  e.innerText = "Login";
-
-});
-
-    }
 
     const markActive = (selector) => {
       document.querySelectorAll(selector).forEach(a => {
@@ -155,6 +170,7 @@
     };
     markActive('.nav-link');
     markActive('.side-link');
+
   </script>
 </body>
 </html>
