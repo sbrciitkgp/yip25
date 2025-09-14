@@ -11,7 +11,7 @@
 
     <a href="/" class="flex items-center gap-3">
       <img src="images/yiplogo.png" alt="YIP" class="w-7 h-7"/>
-      <span class="font-bold">YIP'26</span>
+      <span class="font-bold">7TH YIP</span>
     </a>
 
     <ul class="hidden sm:flex items-center gap-4">
@@ -19,7 +19,7 @@
       <a href="/"            class="nav-link" data-path="/"><li>Home</li></a>
       <a href="/#about"       class="nav-link" data-path="/about"><li>About</li></a>
       <a href="/themes"      class="nav-link" data-path="/themes"><li>Themes</li></a>
-      <a href="/rulebook"    class="nav-link" data-path="/rulebook"><li>Rule Book</li></a>
+      <!-- <a href="/rulebook"    class="nav-link" data-path="/rulebook"><li>Rule Book</li></a> -->
 
 
       <a href="/#gallery"      class="nav-link hidden min-[800px]:inline" data-path="/gallery"><li>Gallery</li></a>
@@ -43,21 +43,7 @@
         </div>
       </li>
 
-<% if (user) { %>
-  <!-- If logged in -->
-  <a href="/logout" class="loglink">
-    <button class="logout  px-4 py-1 rounded-lg bg-red-700">
-      Logout
-    </button>
-  </a>
-<% } else { %>
-  <!-- If NOT logged in -->
-  <a href="/login" class="loglink">
-    <button class="login  px-4 py-1 rounded-lg bg-green-700">
-      Login
-    </button>
-  </a>
-<% } %>
+
 
     </ul>
 
@@ -83,27 +69,13 @@
         <a href="/"             class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/"><li>Home</li></a>
         <a href="/#about"        class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/about"><li>About</li></a>
         <a href="/themes"       class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/themes"><li>Themes</li></a>
-        <a href="/rulebook"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/rulebook"><li>Rule book</li></a>
+        <!-- <a href="/rulebook"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/rulebook"><li>Rule book</li></a> -->
         <a href="/#gallery"      class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/gallery"><li>Gallery</li></a>
         <a href="/#testimonials" class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/testimonials"><li>Testimonials</li></a>
         <a href="/previous-editions"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/previous"><li>Previous YIP</li></a>
         <a href="/messages"     class="side-link px-3 py-2 rounded hover:bg-gray-700" data-path="/messages"><li>Messages</li></a>
         
-<% if (user) { %>
-  <!-- If logged in -->
-  <a href="/logout" class="loglink">
-    <button class="logout  px-4 py-1 rounded-lg bg-red-700">
-      Logout
-    </button>
-  </a>
-<% } else { %>
-  <!-- If NOT logged in -->
-  <a href="/login" class="loglink">
-    <button class="login  px-4 py-1 rounded-lg bg-green-700">
-      Login
-    </button>
-  </a>
-<% } %>
+
 
 </ul>
     </nav>
