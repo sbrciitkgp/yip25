@@ -53,11 +53,10 @@
     <div class="hero__bg" role="img" aria-label="YIP background image"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero_title">Young Innovators Program</h1>
+      <h1 class="hero_title text-6xl">Young Innovators Program</h1>
       <h2 class="hero_subtitle">7th Edition</h2>
       <div class="hero__cta">
-        <a class="btn btn--light" href="#" target="_blank" rel="noopener">Rule Book</a>
-        <a class="btn btn--solid" href="/register" target="_blank" rel="noopener">Register</a>
+        <a class="btn btn--light bg-blue-600 text-white" href="#" target="_blank" rel="noopener">Registration will begin soon</a>
       </div>
     </div>
   </section>
@@ -90,7 +89,7 @@
           </p>
         </div>
 
-        <div class="w-full max-w-3xl mx-auto space-y-6">
+        <div class="w-full max-w-3xl mx-auto space-y-6 my-auto">
           <!-- Item 1 -->
           <div class="flex items-start space-x-3 p-4 rounded-lg animate-slideUp">
             <!-- Icon -->
@@ -119,7 +118,7 @@
               <i class="ri-thumb-up-fill"></i>
             </span>
             <p class="text-sm md:text-lg font-medium">
-              Join YIP'25 and shine.
+              Join 7<sup>th</sup> YIP and shine.
             </p>
           </div>
         </div>
@@ -150,7 +149,7 @@
               of 2-3 members and submit their name and details to the
               coordinating teacher of the school.
             </p>
-            <span class="tl-chip">Started </span>
+            <span class="tl-chip">Registration will start soon</span>
           </div>
         </article>
 
@@ -168,7 +167,7 @@
               also receive the news via email. The selected students will
               proceed to round 2.
             </p>
-            <span class="tl-chip">27th Oct - 15th Dec 2025</span>
+            <span class="tl-chip">To be announced </span>
           </div>
         </article>
 
@@ -187,7 +186,7 @@
               round.Selected teams exhibit and demonstrate prototypes at IIT
               Kharagpur.
             </p>
-            <span class="tl-chip">11th Jan 2025 </span>
+            <span class="tl-chip">To be announced </span>
           </div>
         </article>
 
@@ -201,7 +200,7 @@
               opportunity to demonstrate their ideas in the form of a
               presentation followed by a Q&A session.
             </p>
-            <span class="tl-chip">12th Jan 2025 </span>
+            <span class="tl-chip">To be announced </span>
           </div>
         </article>
       </div>
@@ -209,7 +208,7 @@
   </section>
 
   <!-- Gallery -->
-  <section class="py-8 w-full md:h-screen h-auto" id="gallery">
+  <section class="w-full" id="gallery">
     <h1 class="text-center my-4 text-3xl font-semibold">
       Gallery
     </h1>
@@ -229,6 +228,18 @@
       <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
         <img src="images/gallery_3.jpg" alt="Gallery 3" class="w-full h-full object-cover rounded-lg" />
       </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+        <img src="images/gallery_4.jpg" alt="Gallery 3" class="w-full h-full object-cover rounded-lg" />
+      </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+        <img src="images/gallery_5.jpg" alt="Gallery 3" class="w-full h-full object-cover rounded-lg" />
+      </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+        <img src="images/gallery_6.jpg" alt="Gallery 3" class="w-full h-full object-cover rounded-lg" />
+      </div>
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out slide">
+        <img src="images/IMG_4443.JPG" alt="Gallery 3" class="w-full h-full object-cover rounded-lg" />
+      </div>
 
       <!-- Buttons -->
       <button class="absolute top-1/2 -translate-y-1/2 left-2 
@@ -246,7 +257,7 @@
 
 
   <!-- Testimonials -->
-  <section class="py-10 md:py-16" id="testimonials">
+  <section class="py-15 md:py-20 max-[768px]:py-10" id="testimonials">
     <h2 id="testimonial" class="text-center text-2xl md:text-3xl font-bold mb-6 md:mb-8">
       Testimonials
     </h2>
@@ -303,28 +314,6 @@
     </div>
   </section>
 
-
-  <!-- Query -->
-  <section class="bg-black/60 bg-cover bg-center py-16 text-white flex justify-center">
-    <div class="w-full max-w-lg p-6 rounded-lg">
-      <span class="block w-28 mx-auto text-center bg-teal-600 py-2 rounded text-sm font-semibold mb-4">Query</span>
-      <h1 class="text-center text-2xl font-semibold mb-6">
-        Have any doubts?
-      </h1>
-      <form class="space-y-4">
-        <input type="text" placeholder="Name" class="w-full p-3 rounded-md text-black" required />
-        <div class="flex gap-3 flex-col sm:flex-row w-full">
-          <input type="email" placeholder="Email" class="w-full sm:w-1/2 p-3 rounded-md text-black" required />
-          <input type="tel" placeholder="Phone No." class="w-full sm:w-1/2 p-3 rounded-md text-black" required />
-        </div>
-        <textarea rows="4" placeholder="Enter your query..." class="w-full p-3 rounded-md text-black"
-          required></textarea>
-        <button type="submit" class="block mx-auto w-2/3 py-3 bg-teal-600 hover:bg-teal-700 rounded-md ">
-          Send Query
-        </button>
-      </form>
-    </div>
-  </section>
   <footer class="bg-gray-950 text-center text-gray-400">
     <%- include('partials/footer') %>
   </footer>
