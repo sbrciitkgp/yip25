@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teams</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Teams & Assigned POCs</h1>
+    <div class="fixed right-0 top-0 m-4">
+      <a href="/adminpanel"><button class="bg-red-600 text-white px-3 py-2 rounded-lg">Go to Dashboard</button></a>
+    </div>
+    <div class="overflow-x-auto">
+      <table
+        class="min-w-full border border-gray-300 bg-white shadow-md rounded-lg"
+      >
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="py-3 px-4 text-left">Serial</th>
+            <th class="py-3 px-4 text-left">Team Name</th>
+            <th class="py-3 px-4 text-left">School</th>
+            <th class="py-3 px-4 text-left">POCs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% teams.forEach((team, index) => { %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="py-3 px-4"><%= index + 1 %></td>
+            <td class="py-3 px-4 font-semibold"><%= team.TeamName %></td>
+            <td class="py-3 px-4"><%= team.SchoolName || "N/A" %></td>
+            <td class="py-3 px-4">
+              <% if (team.poc) { %>
+              <span class="font-medium"><%= team.poc.name %></span>
+              (<%= team.poc.email %>, <%= team.poc.phone %>) <% } else { %>
+              <span class="italic text-gray-500">No POC Assigned</span>
+              <% } %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

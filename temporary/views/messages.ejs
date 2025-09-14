@@ -11,8 +11,14 @@
           extend: {
             keyframes: {
               "slide-up": {
-                "0%": { opacity: "0", transform: "translateY(30px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
+                "0%": {
+                  opacity: "0",
+                  transform: "translateY(30px)",
+                },
+                "100%": {
+                  opacity: "1",
+                  transform: "translateY(0)",
+                },
               },
             },
             animation: {
@@ -24,131 +30,177 @@
     </script>
     <title>Messages</title>
   </head>
-  <body class="bg-white flex flex-col h-screen relative">
+
+  <body class="bg-white flex flex-col min-h-screen">
+    <!-- Navbar -->
     <nav
-      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-slate-900 text-slate-100 w-screen"
+      class="sticky flex top-0 z-50 justify-between items-center p-4 bg-slate-900 text-slate-100 w-full"
     >
       <%- include('partials/navbar') %>
     </nav>
 
-    <div>
-      <h1 class="text-center w-full p-4 font-bold text-4xl mb-2 text-white">
-        MESSAGES
-      </h1>
-    </div>
-
+    <!-- Section -->
     <section class="flex-1 flex flex-col justify-center items-center relative">
-      <div
-        class="absolute w-8 h-8 rounded-full top-26 md:left-[19vw] left-[15vw] cursor-pointer bg-transparent prev p-2 z-10"
-      >
-        <img src="images/back.png" alt="" />
+      <!-- Heading -->
+      <div>
+        <h1 class="text-4xl font-bold m-6 text-slate-900">MESSAGES</h1>
       </div>
 
+      <!-- Message Card 1 -->
       <div
-        class="absolute w-8 h-8 rounded-full top-26 md:right-[19vw] right-[15vw] cursor-pointer bg-transparent next p-2 z-10"
+        class="messages bg-gray-100 slide hidden flex flex-col md:flex-row justify-between items-center 
+        m-4 w-90% max-w-5xl bg-white gap-6 p-6 rounded-xl shadow-lg shadow-slate-900/20 
+        text-gray-800 min-h-[350px] max-h-[550px] overflow-y-auto"
       >
-        <img src="images/next.png" alt="" />
-      </div>
-
-      <div
-        class="shadow-lg shadow-slate-900/20 border border-slate-200 messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
-      >
-        <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify text-slate-700">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quo
-            sint maiores...
+        <div class="left sm:w-2/3 w-full p-2">
+          <p class="text-justify text-slate-700 leading-relaxed">
+            The Young Innovators' Program of IIT Kharagpur, in its eight years
+            of existence has been able to establish itself as a flagship event
+            of this country for high school children. The event is a showcase of
+            the enormous talent that the children of this country have in terms
+            of their ability to think beyond classroom lessons and come up with
+            innovative ideas to some relevant and pertinent problems. The
+            projects and exhibits belie the age of these young minds. The desire
+            to push the boundaries of their imagination and the urge to do
+            something useful and relevant to society have left us mesmerized. I
+            wish this event keeps growing as the years go by and spread its
+            wings across the country and beyond.
           </p>
         </div>
         <div
-          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+          class="right flex md:flex-col text-center justify-center gap-3 items-center sm:w-1/3 w-full"
         >
           <img
-            src="images/rm.png"
-            alt=""
-            width="150px"
-            height="150px"
-            class="rounded-lg"
+            src="images/ab.jpeg"
+            alt="Prof Anandaroop Bhattacharya"
+            class="rounded-lg w-[150px] h-[150px] object-cover shadow"
           />
-          <h1 class="text-2xl font-bold text-slate-900">
-            Prof Rabibrata Mukherjee
-          </h1>
-          <h4 class="text-md text-slate-600 font-semibold">
-            Dean, International Relations, IIT Kharagpur
-          </h4>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold text-slate-900">
+              Prof Anandaroop Bhattacharya
+            </h1>
+            <h4 class="text-sm sm:text-md text-slate-600 font-semibold">
+              Dean, International Relations, IIT Kharagpur
+            </h4>
+          </div>
         </div>
       </div>
 
+      <!-- Message Card 2 -->
       <div
-        class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
+        class="messages bg-gray-100 slide hidden flex flex-col md:flex-row justify-between items-center 
+        m-4 w-90% max-w-5xl bg-white gap-6 p-6 rounded-xl shadow-lg text-gray-800 
+        min-h-[350px] max-h-[550px] overflow-y-auto"
       >
-        <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Consectetur debitis rem earum...
+        <div class="left sm:w-2/3 w-full p-2">
+          <p class="text-justify leading-relaxed">
+             Albert Einstein once said that "The true sign of intelligence is not
+            knowledge but imagination". One can go on learning facts and figures
+            but unless one uses one's imagination to see how these facts and
+            figures add up to make the bigger picture one can never claim to
+            have learnt anything. In fact we have to look beyond the classroom
+            and try to use the knowledge that we have learnt to bring a
+            difference in our lives. I am very happy to note that the Young
+            innovators programme of IIT Kharagpur is encouraging this habit of
+            critical thinking among school children. Imagination comes naturally
+            to children whose minds are often unfettered by the realities that
+            adults have to deal with. YIP helps them to power their imagination
+            to make changes in their own lives and those of others around them.
+            Children are thus encouraged to think about the larger society and
+            be more engaged creatures. This engagement is bound to make them
+            more conscientious learners. As they grow up, they will reap the
+            benefits of this learning by being better human beings and better
+            citizens.
           </p>
         </div>
         <div
-          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+          class="right flex md:flex-col text-center justify-center gap-3 items-center sm:w-1/3 w-full"
         >
           <img
-            src="images/rm.png"
-            alt=""
-            width="150px"
-            height="150px"
-            class="rounded-lg"
+            src="images/sk.jpg"
+            alt="Prof Suman Chakrobarty"
+            class="rounded-lg w-[150px] h-[150px] object-cover shadow"
           />
-          <h1 class="text-2xl font-bold text-emerald-700">
-            Prof Rabibrata Mukherjee
-          </h1>
-          <h4 class="text-md text-gray-600 font-semibold">
-            Dean, International Relations, IIT Kharagpur
-          </h4>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold text-emerald-700">
+              Prof Suman Chakrobarty
+            </h1>
+            <h4 class="text-sm sm:text-md text-gray-600 font-semibold">
+              Director, IIT Kharagpur
+            </h4>
+          </div>
         </div>
       </div>
 
+      <!-- Message Card 3 -->
       <div
-        class="messages slide hidden flex flex-col sm:flex-row justify-center items-center m-4 w-[80%] bg-white sm:w-[60vw] gap-2 p-4 rounded-lg shadow-lg text-gray-800"
+        class="messages bg-gray-100 slide hidden flex flex-col md:flex-row justify-between items-center 
+        m-4 w-90% max-w-5xl bg-white gap-6 p-6 rounded-xl shadow-lg text-gray-800 
+        min-h-[350px] max-h-[550px] overflow-y-auto"
       >
-        <div class="left w-[70%] p-2 h-[100%] md:self-center">
-          <p class="text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-            officia sequi facere...
+        <div class="left sm:w-2/3 w-full p-2">
+          <p class="text-justify leading-relaxed">
+             Our history in this planet is a story of innovations and inventions.
+            Our story on this planet is about facing new challenges, devising
+            new solutions and moving on to the next challenge. On the whole,
+            these innovations have brought enormous benefits to humankind, but
+            sometimes they have also brought unintended consequences. Today's
+            greatest challenges are the threats to the environment and human
+            well-being. I am sure that we will find our way out of these as
+            well. The Young Innovators' Program of IIT Kharagpur is our way to
+            spur this consciousness among the youngsters who are our future.
+
           </p>
         </div>
         <div
-          class="right flex flex-col text-center justify-center gap-2 items-center w-[70%] sm:w-[30%]"
+          class="right flex md:flex-col text-center justify-center gap-3 items-center sm:w-1/3 w-full"
         >
           <img
-            src="images/rm.png"
-            alt=""
-            width="150px"
-            height="150px"
-            class="rounded-lg"
+            src="images/sm.jpg"
+            alt="Prof Siddhartha Mukhopadhyay"
+            class="rounded-lg w-[150px] h-[150px] object-cover shadow"
           />
-          <h1 class="text-2xl font-bold text-emerald-700">
-            Prof Rabibrata Mukherjee
-          </h1>
-          <h4 class="text-md text-gray-600 font-semibold">
-            Dean, International Relations, IIT Kharagpur
-          </h4>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold text-emerald-700">
+              Prof Siddhartha Mukhopadhyay
+            </h1>
+            <h4 class="text-sm sm:text-md text-gray-600 font-semibold">
+              Dean, Alumni Affairs, IIT Kharagpur
+            </h4>
+          </div>
         </div>
       </div>
 
-      <div class="btns flex gap-6 m-4">
-        <span
-          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
-        ></span>
-        <span
-          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
-        ></span>
-        <span
-          class="w-3 dot h-3 rounded-full bg-gray-400 cursor-pointer"
-        ></span>
+      <!-- Navigation (Arrows + Dots) -->
+      <div class="flex flex-col items-center gap-4 mt-6">
+        <!-- Arrows -->
+        <div class="flex gap-6">
+          <div
+            class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer  prev"
+          >
+            <img src="images/back.png" alt="Previous" class="w-5" />
+          </div>
+          <div
+            class="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer  next"
+          >
+            <img src="images/next.png" alt="Next" class="w-5" />
+          </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="btns flex gap-4">
+          <span class="w-3 h-3 dot rounded-full bg-gray-400 cursor-pointer"></span>
+          <span class="w-3 h-3 dot rounded-full bg-gray-400 cursor-pointer"></span>
+          <span class="w-3 h-3 dot rounded-full bg-gray-400 cursor-pointer"></span>
+        </div>
       </div>
     </section>
-    <footer class="bg-gray-950 mt-16 text-center text-gray-400">
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 mt-16 text-center text-gray-400 p-4">
       <%- include('partials/footer') %>
     </footer>
+
     <script src="JS/messages.js"></script>
   </body>
 </html>

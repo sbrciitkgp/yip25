@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Admin Panel</title>
+</head>
+
+<body class="min-h-screen bg-gray-100 text-gray-900">
+
+  <nav class="sticky top-0 z-50 flex justify-between items-center p-3 bg-slate-900 shadow">
+    <%- include('partials/navbar') %>
+  </nav>
+
+  <div class="flex flex-col md:flex-row relative ">
+
+    <aside class="hidden w-[200px] md:block  bg-gray-900 text-white p-6 space-y-4 shadow-lg max-h-[calc(100vh-30px)] min-h-[calc(100vh-30px)] z-10 sticky top-[30px]" id="side">
+      <h2 class="text-2xl font-bold mb-6 flex">Admin Panel <div class="hidden text-red-600 font-semibold w-[20px]" id="close">x</div>
+      </h2>
+      <nav class="space-y-3 text-sm font-medium">
+        <a href="/adminpanel" class="block p-2 rounded hover:bg-gray-700 transition">Dashboard</a>
+        <a href="/admin/teams" class="block p-2 rounded hover:bg-gray-700 transition">Teams</a>
+        <a href="/admin/mentors" class="block p-2 rounded hover:bg-gray-700 transition">Mentors</a>
+        <a href="#notice" class="block p-2 rounded hover:bg-gray-700 transition">Post Notice</a>
+        <a href="/admin/result" class="block p-2 rounded hover:bg-gray-700 transition">Declare Result</a>
+      </nav>
+    </aside>
+
+
+    <div class="">
+      <img src="/images/hamburger.png" alt="menu" width="20" class="m-3 cursor-pointer md:hidden fixed z-40" id="adminhamburger" />
+    </div>
+
+    
+
+    <main class="overflow-y-auto max-h-[calc(100vh-30px)]  flex flex-col md:flex-row w-full p-6 gap-6">
+
+      <div class="w-full md:w-3/4 space-y-6">
+
+        <div class="bg-white shadow-xl rounded-lg p-4">
+          <h1 class="text-2xl font-semibold mb-4 border-b pb-2">Allot POC to Teams</h1>
+
+          <form action="/admin/allotpoc" method="post">
+            <div class="overflow-x-auto rounded-lg border border-gray-200">
+              <table class="w-full border-collapse">
+                <thead class="bg-gray-100 text-gray-700 text-sm sticky top-0">
+                  <tr>
+                    <th class="p-3 text-left font-semibold border-b">Team Name</th>
+                    <th class="p-3 text-left font-semibold border-b">School Name</th>
+                    <th class="p-3 text-left font-semibold border-b">Mentor Name</th>
+                    <th class="p-3 text-left font-semibold border-b">POC</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <% teams.forEach((team, index) => { %>
+                  <tr class="hover:bg-gray-50 odd:bg-white even:bg-gray-50">
+                    <td class="p-3 border-b"><%= team.TeamName %></td>
+                    <td class="p-3 border-b"><%= team.SchoolName %></td>
+                    <td class="p-3 border-b"><%= team.MentorName %></td>
+                    <td class="p-3 border-b">
+
+                      <input type="hidden" name="teams[<%= index %>][teamName]" value="<%= team.TeamName %>" />
+
+
+                      <select name="teams[<%= index %>][pocName]" class="border rounded-md p-2 w-full focus:ring focus:ring-blue-300 focus:outline-none">
+                        <option value="">-- Select a POC --</option>
+                        <% mentors.forEach(poc => { %>
+                        <option value="<%= poc.name %>" <%= team.poc && team.poc.toString() === poc._id.toString() ? "selected" : "" %>>
+                          <%= poc.name %> - <%= poc.email %>
+                        </option>
+                        <% }) %>
+                      </select>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="flex justify-end mt-4">
+              <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700 transition">
+                Save Allotments
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+
+        <div class="bg-white shadow-lg rounded-lg p-4 pb-4" id="notice">
+          <h2 class="text-lg font-semibold mb-3 border-b pb-2">Post a New Notice</h2>
+          <form action="/admin/notice" method="post" class="space-y-3">
+            <input type="text" name="notice" placeholder="Type New Notice" class="w-full border rounded-md p-2 focus:ring focus:ring-blue-300 focus:outline-none" />
+            <input type="submit" value="Add Notice" class="text-white bg-red-600 px-4 py-2 rounded-lg cursor-pointer hover:bg-red-700 transition" />
+          </form>
+        </div>
+        <div class="min-h-[20px] flex-none"></div>
+      </div>
+
+      <% if ( notices.length > 0) { %>
+      <aside class="w-full md:w-1/4 bg-gray-50 border border-gray-200 rounded-lg shadow p-4 overflow-y-auto max-h-[80vh]">
+        <h2 class="text-lg font-semibold mb-4">Notices</h2>
+        <ul class="space-y-3">
+          <% notices.reverse().forEach(notice => { %>
+          <li class="bg-gray-100 p-3 rounded-md shadow-sm hover:bg-gray-200 transition">
+            <p class="font-medium mb-1"><%= notice.content %></p>
+            <p class="text-xs text-gray-500 mb-3"><%= notice.createdAt.toDateString() %></p>
+
+            <div class="flex gap-2 flex-wrap">
+              <a href="/admin/notice/<%= notice._id %>/edit">
+                <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
+                  Edit
+                </button>
+              </a>
+              <a href="/admin/notice/<%= notice._id %>/delete" onclick="return confirm('Are you sure you want to delete this notice?');">
+                <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                  Delete
+                </button>
+              </a>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </aside>
+      <% } %>
+    </main>
+  </div>
+   <footer class="bg-gray-950 text-center text-gray-400">
+      <%- include('partials/footer') %>
+    </footer>
+  <script src="JS/adminpanel.js"></script>
+</body>
+
+</html>

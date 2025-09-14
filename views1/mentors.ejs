@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teams</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+      @media (max-width: 500px) {
+        #side {
+          display: none !important; 
+          
+        }
+        #hamburger {
+          display: block !important; 
+        }
+      }
+      @media (min-width: 501px) {
+        #side {
+          display: flex !important; 
+        }
+        #hamburger {
+          display: none !important; 
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 flex">
+
+    <aside
+      id="side"
+      class="flex-col w-[200px] bg-gray-800 text-white p-5 min-h-screen fixed"
+    >
+      <h2 class="text-2xl font-bold mb-6">Admin Panel</h2>
+      <nav class="space-y-3">
+        <a href="/adminpanel" class="block p-2 rounded hover:bg-gray-700">Dashboard</a>
+        <a href="/admin/teams" class="block p-2 rounded hover:bg-gray-700">Teams</a>
+        <a href="/admin/mentors" class="block p-2 rounded hover:bg-gray-700">Mentors</a>
+      </nav>
+    </aside>
+
+    <div id="hamburger" class="hidden absolute top-2 left-2 z-50">
+      <img
+        src="/images/hamburger.png"
+        alt="menu"
+        width="28"
+        class="cursor-pointer"
+      />
+    </div>
+    <div class="md:min-w-[200px] min-h-screen bg-red-800"></div>
+    <div class="flex-1 p-6 relative">
+
+      <div class="absolute top-2 right-2">
+        <a href="/adminpanel">
+          <button
+            class="font-bold bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+          >
+            Go To Dashboard
+          </button>
+        </a>
+      </div>
+
+      <h1 class="text-2xl font-bold mb-6 mt-10 md:mt-0">All Mentors</h1>
+
+      
+      <div class="flex flex-wrap gap-6">
+        <% teams.forEach(team => { %>
+        <div
+          class="bg-white shadow-md rounded-lg p-5 flex flex-col w-64 hover:shadow-lg transition"
+        >
+          <h2 class="text-xl font-bold text-blue-600 mb-3 self-center">
+            <%= team.TeamName %>
+          </h2>
+
+          <div class="mb-2">
+            <p class="font-semibold">Mentor:</p>
+            <p><%= team.MentorName %></p>
+          </div>
+
+          <div class="mb-2">
+            <p class="font-semibold">Email:</p>
+            <p class="text-gray-700"><%= team.MentorEmail %></p>
+          </div>
+
+          <div class="mb-2">
+            <p class="font-semibold">Phone:</p>
+            <p class="text-gray-700"><%= team.MentorPhone %></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <script src="JS/mentors.js"></script>
+  </body>
+</html>
