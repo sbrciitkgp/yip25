@@ -65,6 +65,90 @@ body {
   height: 100%;
   z-index: -1;
 }
+.sponsors {
+  width: min(1100px, 95%);
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: black;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #3b82f6;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Marquee container */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 120px; /* taller for better logo space */
+  margin-bottom: 3rem;
+}
+
+.marquee__inner {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll-left 18s linear infinite;
+}
+
+.marquee:hover .marquee__inner {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Logo box */
+.logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;   /* unified width */
+  height: 100px;  /* unified height */
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Hover lift */
+.logo:hover {
+  transform: translateY(-6px) scale(1.05);
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  .marquee {
+    height: 90px;
+  }
+  .logo {
+    width: 120px;
+    height: 80px;
+  }
+}
 
 .hero__overlay {
   position: absolute;
