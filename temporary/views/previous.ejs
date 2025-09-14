@@ -11,30 +11,10 @@
 </head>
 <body class="bg-white text-white">
   <!-- Navbar -->
-  <header class="bg-[#205781] shadow-md sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 py-4">
-      <!-- Logo -->
-      <div class="flex items-center space-x-3">
-        <img src="\images\Screenshot 2025-08-13 161932 copy.png" alt="Logo" class="h-10">
-      </div>
-
-      <!-- Links -->
-      <nav class="hidden md:flex space-x-8 font-medium">
-        <a href="#" class="hover:text-gray-200">Home</a>
-        <a href="#" class="hover:text-gray-200">About</a>
-        <a href="#" class="hover:text-gray-200">Themes</a>
-        <a href="#" class="hover:text-gray-200">Gallery</a>
-        <a href="#" class="hover:text-gray-200">Testimonial</a>
-        <a href="#" class="hover:text-gray-200">Rulebook</a>
-        <a href="#" class="hover:text-gray-200">More</a>
-      </nav>
-
-      <!-- Button -->
-      <button class="px-4 py-2 bg-white text-[#205781] rounded-full font-semibold hover:bg-gray-100">
-        Login
-      </button>
-    </div>
-  </header>
+ <nav class="fixed top-0 z-50 flex justify-between items-center p-3 bg-[#0b1324] shadow w-full">
+    <%- include('partials/navbar') %>
+  </nav>
+  <br><br>
 
   <!-- Year Buttons -->
   <div id="pre-btn-array" class="mt-5 flex justify-center gap-4 flex-wrap">
@@ -48,9 +28,10 @@
 
   <!-- Dynamic Content goes here -->
   <div id="year-content" class="m-4"></div>
+  <br>
 
-  <footer class="bg-gray-900 mt-16 py-6 text-center text-gray-400">
-    © 2026 Young Innovators Program. All rights reserved.
+  <footer class="bg-gray-950 text-center text-gray-400">
+    <%- include('partials/footer') %>
   </footer>
 
 <script>
@@ -58,7 +39,7 @@
   const yearData = {
   2024: {
     title: "YIP 2024",
-    image: "\\images\\Screenshot 2025-07-01 111405.png",
+    image: "\\images\\YIP 24 Group Photo-min.JPG",
     description: `The Young Innovators' Program of 2024 IIT KGP boasted a nationwide reach, 
       drawing the participation of schools from various corners of the country. 
       As a pivotal component of the program's third round, a select group of 24 schools
@@ -71,21 +52,30 @@
            that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
-        { name: "Neuronex", school: "Gospel Home School, Rishra" },
-        { name: "Team Alpha", school: "Delhi Public School" },
-        { name: "RoboGenius", school: "La Martiniere Kolkata" }
+        { name: "Sunbeam 4", school: "Sunbeam English School, Bhagwanpur" },
+        { name: "Philanthropy Pioneers", school: "Private International English School" },
+        { name: "AMPlify", school: "Vasant Valley School" }
       ],
       junior: [
-        { name: "Tech Kids", school: "Modern High School" },
-        { name: "InnoStars", school: "South Point School" },
-        { name: "FutureCoders", school: "DAV School" }
+        { name: "Neuronex", school: "Gospel Home School, Rishra" },
+        { name: "RuralTech", school: "Lakshmipat Singhania Academy" },
+        { name: "Aegis", school: "Keystone International School" }
       ]
     }
   },
   2023: {
     title: "YIP 2023",
     image: "\\images\\Screenshot 2025-07-01 111405.png",
-    description: `In 2023, the program brought together bright young minds...`,
+    description: `The Young Innovators' Program of 2023 IIT KGP boasted a nationwide reach, 
+      drawing the participation of schools from various corners of the country. 
+      As a pivotal component of the program's third round, a select group of 24 schools
+       were given the unique opportunity to showcase their projects at the revered
+        institution. This interaction extended beyond mere presentations,
+         allowing the students to engage directly with distinguished professors 
+         from IIT KGP. Furthermore, the attendees were enriched by a comprehensive
+          robotics workshop and an extensive campus tour, affording them firsthand 
+          exposure to the expansive academic expanse and state-of-the-art laboratories
+           that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
         { name: "Brainwave", school: "St. Xavier’s School" },
@@ -102,7 +92,16 @@
   2022: {
     title: "YIP 2022",
     image: "\\images\\2022.png",
-    description: `2022 edition was a milestone with expanded participation...`,
+    description: `The Young Innovators' Program of 2022 IIT KGP boasted a nationwide reach, 
+      drawing the participation of schools from various corners of the country. 
+      As a pivotal component of the program's third round, a select group of 24 schools
+       were given the unique opportunity to showcase their projects at the revered
+        institution. This interaction extended beyond mere presentations,
+         allowing the students to engage directly with distinguished professors 
+         from IIT KGP. Furthermore, the attendees were enriched by a comprehensive
+          robotics workshop and an extensive campus tour, affording them firsthand 
+          exposure to the expansive academic expanse and state-of-the-art laboratories
+           that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
         { name: "Senior Champs", school: "ABC School" },
@@ -119,7 +118,16 @@
   2019: {
     title: "YIP 2019",
     image: "\\images\\2021.png",
-    description: `In 2019, the program brought together bright young minds...`,
+    description: `The Young Innovators' Program of 2019 IIT KGP boasted a nationwide reach, 
+      drawing the participation of schools from various corners of the country. 
+      As a pivotal component of the program's third round, a select group of 24 schools
+       were given the unique opportunity to showcase their projects at the revered
+        institution. This interaction extended beyond mere presentations,
+         allowing the students to engage directly with distinguished professors 
+         from IIT KGP. Furthermore, the attendees were enriched by a comprehensive
+          robotics workshop and an extensive campus tour, affording them firsthand 
+          exposure to the expansive academic expanse and state-of-the-art laboratories
+           that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
         { name: "Brainwave", school: "St. Xavier’s School" },
@@ -136,7 +144,16 @@
   2018: {
     title: "YIP 2018",
     image: "\\images\\2021.png",
-    description: `In 2018, the program brought together bright young minds...`,
+    description: `The Young Innovators' Program of 2018 IIT KGP boasted a nationwide reach, 
+      drawing the participation of schools from various corners of the country. 
+      As a pivotal component of the program's third round, a select group of 24 schools
+       were given the unique opportunity to showcase their projects at the revered
+        institution. This interaction extended beyond mere presentations,
+         allowing the students to engage directly with distinguished professors 
+         from IIT KGP. Furthermore, the attendees were enriched by a comprehensive
+          robotics workshop and an extensive campus tour, affording them firsthand 
+          exposure to the expansive academic expanse and state-of-the-art laboratories
+           that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
         { name: "Brainwave", school: "St. Xavier’s School" },
@@ -153,7 +170,16 @@
   2017: {
     title: "YIP 2017",
     image: "\\images\\2021.png",
-    description: `In 2017, the program brought together bright young minds...`,
+    description: `The Young Innovators' Program of 2017 IIT KGP boasted a nationwide reach, 
+      drawing the participation of schools from various corners of the country. 
+      As a pivotal component of the program's third round, a select group of 24 schools
+       were given the unique opportunity to showcase their projects at the revered
+        institution. This interaction extended beyond mere presentations,
+         allowing the students to engage directly with distinguished professors 
+         from IIT KGP. Furthermore, the attendees were enriched by a comprehensive
+          robotics workshop and an extensive campus tour, affording them firsthand 
+          exposure to the expansive academic expanse and state-of-the-art laboratories
+           that distinguish IIT KGP as a leading educational institution in India.`,
     winners: {
       senior: [
         { name: "Brainwave", school: "St. Xavier’s School" },
