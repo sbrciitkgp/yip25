@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Results</h1>
+    <div class="w-full flex  justify-end"><a href="/adminpanel"><button class="bg-red-600 px-2 py-1 text-white rounded-lg ">Go To Dashboard</button></a></div>
+
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">Round 1 result</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <table class="w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-blue-200">
+              <th class="border px-4 py-2 text-left">Team Name</th>
+              <th class="border px-4 py-2 text-left">School</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% teams.forEach(team => { %>
+              <tr class="hover:bg-blue-50">
+                <td class="border px-4 py-2"><%= team.TeamName %></td>
+                <td class="border px-4 py-2"><%= team.SchoolName %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+    </div >
+    </section>
+
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4 text-green-600">Round 2 result</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <table class="w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-green-200">
+              <th class="border px-4 py-2 text-left">Team Name</th>
+              <th class="border px-4 py-2 text-left">School</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% teams.filter(t => t.Round1).forEach(team => { %>
+              <tr class="hover:bg-green-50">
+                <td class="border px-4 py-2"><%= team.TeamName %></td>
+                <td class="border px-4 py-2"><%= team.SchoolName %></td>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <button type="submit" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg">Update Round 2</button>
+    </div>
+    </section>
+
+    
+    <section>
+      <h2 class="text-2xl font-semibold mb-4 text-red-600">Round 3 result</h2>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <table class="w-full table-auto border-collapse">
+          <thead>
+            <tr class="bg-red-200">
+              <th class="border px-4 py-2 text-left">Team Name</th>
+              <th class="border px-4 py-2 text-left">School</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% teams.filter(t => t.Round2).forEach(team => { %>
+              <tr class="hover:bg-red-50">
+                <td class="border px-4 py-2"><%= team.TeamName %></td>
+                <td class="border px-4 py-2"><%= team.SchoolName %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+    </div>
+    </section>
+  </div>
+
+</body>
+</html>

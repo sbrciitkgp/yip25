@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Login - YIP 26</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+</head>
+
+<body>
+  <div class="bg-gradient-to-tr from-gray-900 to-black min-h-screen flex items-center justify-center relative font-sans">
+    <nav class="fixed top-0 z-50 flex justify-between items-center p-3 bg-slate-900 shadow w-full">
+      <%- include('partials/navbar') %>
+    </nav>
+
+    <% if (flashMessages.error && flashMessages.error.length > 0) { %>
+    <div id="flash" class="fixed top-[60px] right-4 bg-red-500 text-white px-4 py-2 rounded shadow-md z-50 transition-opacity duration-300">
+      <%= flashMessages.error[0] %>
+    </div>
+    <script>
+      setTimeout(() => {
+        const flash = document.getElementById("flash");
+        if (flash) flash.style.opacity = "0";
+      }, 3000);
+    </script>
+    <% } %>
+
+
+    <div class="fixed inset-0 z-0">
+      <img src="/images/iitkgp.jpg" alt="IIT KGP" class="w-full h-full object-cover opacity-50" />
+    </div>
+    <div class="z-10 backdrop-blur-md bg-white/10 border border-white/20 shadow-2xl rounded-2xl px-10 py-8 w-full max-w-sm">
+      <h2 class="text-3xl font-bold text-center text-blue-400 mb-6 drop-shadow-sm">
+        Welcome Back
+      </h2>
+      <p class="text-center text-gray-300 mb-6 text-sm">
+        Log in to your YIP 26 account
+      </p>
+
+      <form action="/user/login" method="post" class="flex flex-col gap-4">
+        <input type="text" name="TeamName" placeholder="Team Name" class="bg-white/10 border border-white/20 text-white placeholder-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required />
+        <input type="password" name="Password" placeholder="Password" class="bg-white/10 border border-white/20 text-white placeholder-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition" required />
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md font-semibold transition duration-200">
+          Login
+        </button>
+        <a href="/register" class="text-sm text-blue-300 text-center hover:underline mt-2">
+          Don't have an account? Register here
+        </a>
+      </form>
+    </div>
+  </div>
+  <footer class="bg-black text-center text-gray-400 relative z-10">
+  <%- include('partials/footer') %>
+</footer>
+</body>
+</html>
