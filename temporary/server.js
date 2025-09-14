@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // now load setUser
-const setUser = require("./middlewares/setUser");
+const setUser = require("../middlewares/setUser");
 app.use(setUser);
 
 
@@ -45,9 +45,22 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // ====== Routes ======
-const mainRoutes = require("./routes/mainRoutes");
 
-app.use("/", mainRoutes);
+app.get('/',(req,res)=>{
+    res.render('home')
+})
+
+app.get('/previous-editions',(req,res)=>{
+    res.render('previous')
+})
+
+app.get('/messages',(req,res)=>{
+    res.render('messages')
+})
+
+app.get('/themes',(req,res)=>{
+    res.render('themes')
+})
 
 // ====== Server ======
 const PORT = process.env.PORT || 3000;
